@@ -2,6 +2,7 @@
 #define ABOUTDIALOG_H
 
 #include <QDialog>
+#include <QLabel>
 
 namespace Ui {
 class AboutDialog;
@@ -17,6 +18,9 @@ public:
 
 private:
     Ui::AboutDialog *ui;
+    QLabel *versionLabel;
+    QPushButton *updateButton;
+    QPushButton *homepageButton;
 };
 
 #endif // ABOUTDIALOG_H
