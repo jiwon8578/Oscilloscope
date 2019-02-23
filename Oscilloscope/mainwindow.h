@@ -75,8 +75,12 @@ private:
     QAction *contentsAct;
     QAction *aboutAct;
 
+    //Make plot
+    QWidget *customPlot;
+
     void createMenus();
     void createActions();
+    void makeplot();
 };
 
 #endif // MAINWINDOW_H
