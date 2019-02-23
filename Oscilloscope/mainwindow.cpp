@@ -25,6 +25,42 @@ void MainWindow::createMenus()
 {
     menuBar()->setStyleSheet("background-color: #4d4d4d"); //menubar 색깔 변경
 
+    //FILE만들기.
+    file = menuBar() -> addMenu("File");
+    load_setups = file -> addAction("Load Setups");
+    save_setups = file -> addAction("Save Setups");
+    file -> addSeparator();
+    open_file = file -> addAction("Open File");
+    save_file = file -> addAction("Save File");
+    file -> addSeparator();
+    print = file -> addAction("Print");
+    exit = file -> addAction("Exit");
+
+    //VIEW만들기.
+    view = menuBar() -> addMenu("View");
+    osWaveFoam = view -> addAction("Oscilloscope Waveform Window");
+    osSetupWindow = view -> addAction("Oscilloscope Setup Window");
+    view -> addSeparator();
+    FFTWaveWindow = view -> addAction("FFT Wavefoam Window");
+    FFTSetWindow = view -> addAction("FFT Setup Window");
+    view -> addSeparator();
+    toolBar = view -> addAction("Tool Bar");
+    arrangeAllWindow = view -> addAction("Arrange All Window");
+    fullScreen = view -> addAction("Full Screen");
+
+    //setup만들기.
+    setup = menuBar() -> addMenu("Setup");
+    osSetup = setup -> addAction("Oscilloscope Setup");
+    fftSetup = setup -> addAction("FFT Analyzer Setup");
+    resetDefault = setup -> addAction("All Setup Reset");
+
+    //utility만들기.
+    utility = menuBar() -> addMenu("Utility");
+    transSetup = utility -> addAction("Transducer Setup");
+    testTargetSetup = utility -> addAction("Test Target Setup");
+    screenCapture = utility -> addAction("Screen Capture");
+    deleteSetup = utility -> addAction("Delete Setup");
+
     //Cursor Menu
     cursorMenu = menuBar()->addMenu("Cursor");
     noneAct = cursorMenu->addAction("None");
