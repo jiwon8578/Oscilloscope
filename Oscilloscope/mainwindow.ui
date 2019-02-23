@@ -15,8 +15,11 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
+    <item row="1" column="0">
+     <widget class="QCustomPlot" name="fftPlot" native="true"/>
+    </item>
     <item row="0" column="0">
-     <widget class="QCustomPlot" name="customPlot" native="true"/>
+     <widget class="QCustomPlot" name="freqPlot" native="true"/>
     </item>
    </layout>
   </widget>

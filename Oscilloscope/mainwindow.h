@@ -18,6 +18,9 @@ public:
 private slots:
     void about();
 
+    void createfftPlot();
+    void createfreqPlot();
+
 private:
     Ui::MainWindow *ui;
 
@@ -80,7 +83,6 @@ private:
 
     void createMenus();
     void createActions();
-    void createPlot();
 };
 
 #endif // MAINWINDOW_H
