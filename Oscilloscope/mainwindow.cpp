@@ -39,7 +39,11 @@ void MainWindow::createMenus()
     save_file = file -> addAction("Save File");
     file -> addSeparator();
     print = file -> addAction("Print");
-    exit = file -> addAction("Exit");
+    //exit = file -> addAction("Exit"); // line#44로 대체.
+
+    QAction *quit = new QAction("Exit", this);
+    file -> addAction(quit);
+    connect(quit, &QAction::triggered, qApp, QApplication::quit);
 
     //VIEW만들기.
     view = menuBar() -> addMenu("View");
