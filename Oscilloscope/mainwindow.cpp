@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "aboutdialog.h"
+#include <QVBoxLayout>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -22,6 +23,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::createMenus()
 {
+    menuBar()->setStyleSheet("background-color: #4d4d4d"); //menubar 색깔 변경
+
     //Cursor Menu
     cursorMenu = menuBar()->addMenu("Cursor");
     noneAct = cursorMenu->addAction("None");
