@@ -18,9 +18,6 @@ public:
 private slots:
     void about();
 
-    void createfftPlot();
-    void createfreqPlot();
-
 private:
     Ui::MainWindow *ui;
     //File을 만들어볼게요.
@@ -115,6 +112,7 @@ private:
     void menubars();
     void createMenus();
     void createActions();
+    void loadSubWindow(QWidget *widget);
 };
 
 #endif // MAINWINDOW_H

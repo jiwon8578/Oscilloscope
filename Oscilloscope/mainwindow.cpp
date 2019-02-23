@@ -2,23 +2,26 @@
 #include "ui_mainwindow.h"
 #include "aboutdialog.h"
 #include <QVBoxLayout>
+#include <QMdiSubWindow>
+#include "fftplot.h"
+#include "freqplot.h"
 
-//
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
     this->setStyleSheet("background-color: #454548;"); //background 색상 변경
+    setCentralWidget(ui->mdiArea);
 
     createMenus();
     createActions();
 
+    loadSubWindow(new fftPlot(this));
+    loadSubWindow(new freqPlot(this));
+
     setWindowTitle("Oscilloscope");
     resize(1920, 1080);
-
-    MainWindow::createfreqPlot();
-    MainWindow::createfftPlot();
 }
 
 MainWindow::~MainWindow()
@@ -150,45 +153,14 @@ void MainWindow::createActions()
     connect(aboutAct, &QAction::triggered, this, &MainWindow::about); // (변수명, 액션, parent, about함수를 실행시켜라)
 }
 
-void MainWindow::createfftPlot()
+void MainWindow::loadSubWindow(QWidget *widget) //mdiArea에 sub window를 띄우는 함수
 {
-    // generate some data:
-    QVector<double> x(101), y(101); // initialize with entries 0..100
-    for (int i=0; i<101; ++i)
-    {
-      x[i] = i/50.0 - 1; // x goes from -1 to 1
-      y[i] = x[i]*x[i]; // let's plot a quadratic function
-    }
-    // create graph and assign data to it:
-    ui->fftPlot->addGraph();
-    ui->fftPlot->graph(0)->setData(x, y);
-    // give the axes some labels:
-    ui->fftPlot->xAxis->setLabel("x");
-    ui->fftPlot->yAxis->setLabel("y");
-    // set axes ranges, so we see all data:
-    ui->fftPlot->xAxis->setRange(-1, 1);
-    ui->fftPlot->yAxis->setRange(0, 1);
-    ui->fftPlot->replot();
+    auto window = ui->mdiArea->addSubWindow(widget);
+    window->resize(500,300);
+    window->show();
 }
 
 
-void MainWindow::createfreqPlot()
-{
-    // generate some data:
-    QVector<double> x(101), y(101); // initialize with entries 0..100
-    for (int i=0; i<101; ++i)
-    {
-      x[i] = i/50.0 - 1; // x goes from -1 to 1
-      y[i] = x[i]*x[i]; // let's plot a quadratic function
-    }
-    // create graph and assign data to it:
-    ui->freqPlot->addGraph();
-    ui->freqPlot->graph(0)->setData(x, y);
-    // give the axes some labels:
-    ui->freqPlot->xAxis->setLabel("x");
-    ui->freqPlot->yAxis->setLabel("y");
-    // set axes ranges, so we see all data:
-    ui->freqPlot->xAxis->setRange(-1, 1);
-    ui->freqPlot->yAxis->setRange(0, 1);
-    ui->freqPlot->replot();
-}
+
+
+

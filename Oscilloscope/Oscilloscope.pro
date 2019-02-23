@@ -28,16 +28,22 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     aboutdialog.cpp \
-    qcustomplot.cpp
+    qcustomplot.cpp \
+    fftplot.cpp \
+    freqplot.cpp
 
 HEADERS += \
         mainwindow.h \
     aboutdialog.h \
-    qcustomplot.h
+    qcustomplot.h \
+    fftplot.h \
+    freqplot.h
 
 FORMS += \
         mainwindow.ui \
-    aboutdialog.ui
+    aboutdialog.ui \
+    fftplot.ui \
+    freqplot.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
