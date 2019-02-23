@@ -24,6 +24,7 @@ MainWindow::~MainWindow()
 void MainWindow::createMenus()
 {
     menuBar()->setStyleSheet("background-color: #4d4d4d"); //menubar 색깔 변경
+    //menuBar()->setFont("");
 
     //FILE만들기.
     file = menuBar() -> addMenu("File");
