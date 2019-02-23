@@ -23,6 +23,37 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    //File을 만들어볼게요.
+    QMenu *file;
+    QAction *load_setups;
+    QAction *save_setups;
+    QAction *open_file;
+    QAction *save_file;
+    QAction *print;
+    QAction *exit;
+
+    //VIEW를 만들어볼게요.
+    QMenu *view;
+    QAction *osWaveFoam;
+    QAction *osSetupWindow;
+    QAction *FFTWaveWindow;
+    QAction *FFTSetWindow;
+    QAction *toolBar;
+    QAction *arrangeAllWindow;
+    QAction *fullScreen;
+
+    //Setup을 만들어볼게요.
+    QMenu *setup;
+    QAction *osSetup;
+    QAction *fftSetup;
+    QAction *resetDefault;
+
+    //Utility를 만들어볼게요.
+    QMenu *utility;
+    QAction *transSetup;
+    QAction *testTargetSetup;
+    QAction *screenCapture;
+    QAction *deleteSetup;
 
     //Cursor Menu
     QMenu *cursorMenu;
@@ -81,6 +112,7 @@ private:
     //Make plot
     QWidget *customPlot;
 
+    void menubars();
     void createMenus();
     void createActions();
 };
