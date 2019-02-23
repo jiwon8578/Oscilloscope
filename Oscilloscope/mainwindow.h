@@ -80,7 +80,7 @@ private:
 
     void createMenus();
     void createActions();
-    void makeplot();
+    void createPlot();
 };
 
 #endif // MAINWINDOW_H
