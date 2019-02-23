@@ -13,3 +13,5 @@ AboutDialog::~AboutDialog()
 {
     delete ui;
 }
+
+// 지원아 안녕
