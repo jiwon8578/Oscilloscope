@@ -100,5 +100,5 @@ void MainWindow::about()
 
 void MainWindow::createActions()
 {
-    connect(aboutAct, &QAction::triggered, this, &MainWindow::about);
+    connect(aboutAct, &QAction::triggered, this, &MainWindow::about); // (변수명, 액션, parent, about함수를 실행시켜라)
 }
