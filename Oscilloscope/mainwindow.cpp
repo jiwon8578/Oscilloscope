@@ -5,6 +5,7 @@
 #include <QMdiSubWindow>
 #include "fftplot.h"
 #include "freqplot.h"
+#include "oscisetup.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -17,8 +18,9 @@ MainWindow::MainWindow(QWidget *parent) :
     createMenus();
     createActions();
 
-    loadSubWindow(new fftPlot(this));
-    loadSubWindow(new freqPlot(this));
+    loadSubWindow_plot(new fftPlot(this));
+    loadSubWindow_setup(new OsciSetup(this));
+    loadSubWindow_plot(new freqPlot(this));
 
     setWindowTitle("Oscilloscope");
     resize(1920, 1080);
@@ -153,10 +155,17 @@ void MainWindow::createActions()
     connect(aboutAct, &QAction::triggered, this, &MainWindow::about); // (변수명, 액션, parent, about함수를 실행시켜라)
 }
 
-void MainWindow::loadSubWindow(QWidget *widget) //mdiArea에 sub window를 띄우는 함수
+void MainWindow::loadSubWindow_plot(QWidget *widget) //mdiArea에 sub window를 띄우는 함수 - plot용
 {
     auto window = ui->mdiArea->addSubWindow(widget);
-    window->resize(500,300);
+    window->resize(1600,450);
+    window->show();
+}
+
+void MainWindow::loadSubWindow_setup(QWidget *widget) //mdiArea에 sub window를 띄우는 함수 - setup용
+{
+    auto window = ui->mdiArea->addSubWindow(widget);
+    window->resize(320,450);
     window->show();
 }
 

@@ -112,7 +112,8 @@ private:
     void menubars();
     void createMenus();
     void createActions();
-    void loadSubWindow(QWidget *widget);
+    void loadSubWindow_plot(QWidget *widget);
+    void loadSubWindow_setup(QWidget *widget);
 };
 
 #endif // MAINWINDOW_H
