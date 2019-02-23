@@ -9,7 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    //this->setStyleSheet("background-color: black;");
+    this->setStyleSheet("background-color: #454548;"); //background 색상 변경
 
     createMenus();
     createActions();
@@ -28,7 +28,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::createMenus()
 {
-    menuBar()->setStyleSheet("background-color: #4d4d4d"); //menubar 색깔 변경
+    menuBar()->setStyleSheet("background-color: #454548"); //menubar 색상 변경
+    menuBar()->setStyleSheet("color: #FFFFFF"); //menubar 글씨 색상 변경
     //menuBar()->setFont("");
 
     //FILE만들기.
