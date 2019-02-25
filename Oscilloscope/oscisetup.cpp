@@ -14,3 +14,8 @@ OsciSetup::~OsciSetup()
 {
     delete ui;
 }
+
+QString OsciSetup::currentText() const
+{
+    return ui->comboBox->currentText();
+}

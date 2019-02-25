@@ -1,11 +1,15 @@
 #include "freqplot.h"
 #include "ui_freqplot.h"
+#include "qmath.h"
+#include "oscisetup.h"
 
 freqPlot::freqPlot(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::freqPlot)
 {
     ui->setupUi(this);
+    m_form = new OsciSetup; //test
+    m_form -> show();       //test
     createfreqPlot();
 }
 
@@ -16,21 +20,23 @@ freqPlot::~freqPlot()
 
 void freqPlot::createfreqPlot()
 {
-    // generate some data:
-    QVector<double> x(101), y(101); // initialize with entries 0..100
+    double f = m_form->currentText().toDouble(); //test
+    double w = 2*(M_PI)*f; //각 진동수 생성
+    double Vmax = 10 ;
+    QVector<double> time(101), v(101);
     for (int i=0; i<101; ++i)
     {
-      x[i] = i/50.0 - 1; // x goes from -1 to 1
-      y[i] = x[i]*x[i]; // let's plot a quadratic function
+      time[i] = i;
+      v[i] = Vmax*sin(w*i); // let's plot a quadratic function
     }
     // create graph and assign data to it:
     ui->freqCustomPlot->addGraph();
-    ui->freqCustomPlot->graph(0)->setData(x, y);
+    ui->freqCustomPlot->graph(0)->setData(time, v);
     // give the axes some labels:
-    ui->freqCustomPlot->xAxis->setLabel("x");
-    ui->freqCustomPlot->yAxis->setLabel("y");
+    ui->freqCustomPlot->xAxis->setLabel("Time");
+    ui->freqCustomPlot->yAxis->setLabel("Value");
     // set axes ranges, so we see all data:
-    ui->freqCustomPlot->xAxis->setRange(-1, 1);
-    ui->freqCustomPlot->yAxis->setRange(0, 1);
+    ui->freqCustomPlot->xAxis->setRange(0, 100);
+    ui->freqCustomPlot->yAxis->setRange(-10, 10);
     ui->freqCustomPlot->replot();
 }

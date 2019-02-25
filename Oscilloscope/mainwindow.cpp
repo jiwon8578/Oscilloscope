@@ -18,9 +18,10 @@ MainWindow::MainWindow(QWidget *parent) :
     createMenus();
     createActions();
 
+    loadSubWindow_plot(new freqPlot(this));
     loadSubWindow_plot(new fftPlot(this));
     loadSubWindow_setup(new OsciSetup(this));
-    loadSubWindow_plot(new freqPlot(this));
+
 
     setWindowTitle("Oscilloscope");
     resize(1920, 1080);

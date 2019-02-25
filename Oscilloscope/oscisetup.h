@@ -15,6 +15,7 @@ public:
     explicit OsciSetup(QWidget *parent = nullptr);
     ~OsciSetup();
 
+    QString currentText() const; //test
 private:
     Ui::OsciSetup *ui;
 };
