@@ -159,7 +159,7 @@ void MainWindow::createActions()
 void MainWindow::loadSubWindow_plot(QWidget *widget) //mdiArea에 sub window를 띄우는 함수 - plot용
 {
     auto window = ui->mdiArea->addSubWindow(widget);
-    window->resize(1600,450);
+    window->resize(320,450);
     window->show();
 }
 

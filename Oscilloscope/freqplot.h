@@ -4,7 +4,7 @@
 #include <QWidget>
 #include "oscisetup.h" //test
 
-class OsciSetup;
+class OsciSetup; //test
 
 namespace Ui {
 class freqPlot;
