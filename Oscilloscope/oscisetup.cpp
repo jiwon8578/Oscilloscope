@@ -1,5 +1,7 @@
 #include "oscisetup.h"
 #include "ui_oscisetup.h"
+#include "mainwindow.h"
+#include <QCloseEvent>
 
 OsciSetup::OsciSetup(QWidget *parent) :
     QWidget(parent),
@@ -18,4 +20,12 @@ OsciSetup::~OsciSetup()
 QString OsciSetup::currentText() const //test
 {
     return ui->comboBox->currentText();
+}
+
+bool MainWindow::isOsciSetupOpen;
+
+void OsciSetup::closeEvent(QCloseEvent *event)
+{
+    MainWindow::isOsciSetupOpen = false;
+    event->accept();
 }

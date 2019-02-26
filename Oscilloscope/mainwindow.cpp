@@ -20,8 +20,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     loadSubWindow_plot(new freqPlot(this));
     loadSubWindow_plot(new fftPlot(this));
-    loadSubWindow_setup(new OsciSetup(this));
 
+    loadSubWindow_setup(new OsciSetup(this));
 
     setWindowTitle("Oscilloscope");
     resize(1920, 1080);
@@ -151,9 +151,17 @@ void MainWindow::about()
     aboutDialog.exec();
 }
 
+void MainWindow::osciSetupFunc()
+{
+    if(isOsciSetupOpen == false) {
+        loadSubWindow_setup(new OsciSetup(this));
+    }
+}
+
 void MainWindow::createActions()
 {
     connect(aboutAct, &QAction::triggered, this, &MainWindow::about); // (변수명, 액션, parent, about함수를 실행시켜라)
+    connect(osSetup, &QAction::triggered, this, &MainWindow::osciSetupFunc);
 }
 
 void MainWindow::loadSubWindow_plot(QWidget *widget) //mdiArea에 sub window를 띄우는 함수 - plot용
@@ -168,6 +176,7 @@ void MainWindow::loadSubWindow_setup(QWidget *widget) //mdiArea에 sub window를
     auto window = ui->mdiArea->addSubWindow(widget);
     window->resize(320,450);
     window->show();
+    isOsciSetupOpen = true;
 }
 
 

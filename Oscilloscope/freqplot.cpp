@@ -9,7 +9,7 @@ freqPlot::freqPlot(QWidget *parent) :
 {
     ui->setupUi(this);
     m_form = new OsciSetup; //test
-    m_form -> show();       //test
+    //m_form -> show();       //test
     createfreqPlot();
 }
 

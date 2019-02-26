@@ -14,9 +14,11 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    static bool isOsciSetupOpen;
 
 private slots:
     void about();
+    void osciSetupFunc();
 
 private:
     Ui::MainWindow *ui;

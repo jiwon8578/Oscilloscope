@@ -2,6 +2,7 @@
 #define OSCISETUP_H
 
 #include <QWidget>
+#include <QCloseEvent>
 
 namespace Ui {
 class OsciSetup;
@@ -18,6 +19,7 @@ public:
     QString currentText() const; //test
 private:
     Ui::OsciSetup *ui;
+    void closeEvent(QCloseEvent *event) override;
 };
 
 #endif // OSCISETUP_H
