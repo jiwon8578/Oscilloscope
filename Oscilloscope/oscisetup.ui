@@ -192,28 +192,7 @@
        <item>
         <layout class="QVBoxLayout" name="verticalLayout_2">
          <item>
-          <widget class="QComboBox" name="comboBox">
-           <item>
-            <property name="text">
-             <string>10</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>20</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>30</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>40</string>
-            </property>
-           </item>
-          </widget>
+          <widget class="QLineEdit" name="timeEdit"/>
          </item>
          <item>
           <spacer name="verticalSpacer_8">
@@ -569,6 +548,13 @@
         <widget class="QPushButton" name="ResetToDefBtn">
          <property name="text">
           <string>Reset to default</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="setupButton">
+         <property name="text">
+          <string>OK</string>
          </property>
         </widget>
        </item>

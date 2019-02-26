@@ -16,7 +16,12 @@ public:
     explicit OsciSetup(QWidget *parent = nullptr);
     ~OsciSetup();
 
-    QString currentText() const; //test
+signals:
+    void entered(double,double);
+
+private slots:
+    void on_setupButton_clicked();
+
 private:
     Ui::OsciSetup *ui;
     void closeEvent(QCloseEvent *event) override;

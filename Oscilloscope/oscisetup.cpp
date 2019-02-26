@@ -17,10 +17,6 @@ OsciSetup::~OsciSetup()
     delete ui;
 }
 
-QString OsciSetup::currentText() const //test
-{
-    return ui->comboBox->currentText();
-}
 
 bool MainWindow::isOsciSetupOpen;
 
@@ -28,4 +24,11 @@ void OsciSetup::closeEvent(QCloseEvent *event)
 {
     MainWindow::isOsciSetupOpen = false;
     event->accept();
+}
+
+void OsciSetup::on_setupButton_clicked()
+{
+    double volt = ui->voltageEdit->text().toDouble();
+    double time = ui->timeEdit->text().toDouble();
+    emit entered(time, volt);
 }

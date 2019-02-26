@@ -7,10 +7,10 @@ freqPlot::freqPlot(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::freqPlot)
 {
+    sender = new OsciSetup;
+    connect(sender,SIGNAL(entered(double,double)),this,SLOT(inputvalue(double,double)));
     ui->setupUi(this);
-    m_form = new OsciSetup; //test
-    //m_form -> show();       //test
-    createfreqPlot();
+
 }
 
 freqPlot::~freqPlot()
@@ -18,20 +18,19 @@ freqPlot::~freqPlot()
     delete ui;
 }
 
-void freqPlot::createfreqPlot()
+void freqPlot::inputvalue(double time,double volt)
 {
-    double f = m_form->currentText().toDouble(); //test
-    double w = 2*(M_PI)*f; //각 진동수 생성
-    double Vmax = 10 ;
-    QVector<double> time(101), v(101);
+    double w = 2*(M_PI)*(1/time); //각 진동수 생성
+    double Vmax = volt ;
+    QVector<double> t(101), v(101);
     for (int i=0; i<101; ++i)
     {
-      time[i] = i;
+      t[i] = i;
       v[i] = Vmax*sin(w*i); // let's plot a quadratic function
     }
     // create graph and assign data to it:
     ui->freqCustomPlot->addGraph();
-    ui->freqCustomPlot->graph(0)->setData(time, v);
+    ui->freqCustomPlot->graph(0)->setData(t, v);
     // give the axes some labels:
     ui->freqCustomPlot->xAxis->setLabel("Time");
     ui->freqCustomPlot->yAxis->setLabel("Value");
