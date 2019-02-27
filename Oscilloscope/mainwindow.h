@@ -19,6 +19,8 @@ public:
 private slots:
     void about();
     void osciSetupFunc();
+    void transducerSetup();
+    void ttSetup();
 
 private:
     Ui::MainWindow *ui;
@@ -116,6 +118,7 @@ private:
     void createActions();
     void loadSubWindow_plot(QWidget *widget);
     void loadSubWindow_setup(QWidget *widget);
+
 };
 
 #endif // MAINWINDOW_H

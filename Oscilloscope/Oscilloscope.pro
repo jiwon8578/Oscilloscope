@@ -31,7 +31,9 @@ SOURCES += \
     qcustomplot.cpp \
     fftplot.cpp \
     freqplot.cpp \
-    oscisetup.cpp
+    oscisetup.cpp \
+    transducersetupdialog.cpp \
+    testtargetsetupdialog.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -39,14 +41,18 @@ HEADERS += \
     qcustomplot.h \
     fftplot.h \
     freqplot.h \
-    oscisetup.h
+    oscisetup.h \
+    transducersetupdialog.h \
+    testtargetsetupdialog.h
 
 FORMS += \
         mainwindow.ui \
     aboutdialog.ui \
     fftplot.ui \
     freqplot.ui \
-    oscisetup.ui
+    oscisetup.ui \
+    transducersetupdialog.ui \
+    testtargetsetupdialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

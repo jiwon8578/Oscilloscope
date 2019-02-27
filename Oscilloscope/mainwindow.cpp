@@ -6,6 +6,8 @@
 #include "fftplot.h"
 #include "freqplot.h"
 #include "oscisetup.h"
+#include "transducersetupdialog.h"
+#include "testtargetsetupdialog.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -158,11 +160,27 @@ void MainWindow::osciSetupFunc()
     }
 }
 
+void MainWindow::transducerSetup()
+{
+    TransducerSetupDialog transducersetupDialog;
+    transducersetupDialog.exec();
+}
+
+void MainWindow::ttSetup()
+{
+    TestTargetSetupDialog ttSetupDialog;
+    ttSetupDialog.exec();
+}
+
 void MainWindow::createActions()
 {
     connect(aboutAct, &QAction::triggered, this, &MainWindow::about); // (변수명, 액션, parent, about함수를 실행시켜라)
     connect(osSetup, &QAction::triggered, this, &MainWindow::osciSetupFunc);
+    connect(transSetup, &QAction::triggered, this, &MainWindow::transducerSetup);
+    connect(testTargetSetup, &QAction::triggered, this, &MainWindow::ttSetup);
+
 }
+
 
 void MainWindow::loadSubWindow_plot(QWidget *widget) //mdiArea에 sub window를 띄우는 함수 - plot용
 {
