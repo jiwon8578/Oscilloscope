@@ -20,8 +20,8 @@ public:
     ~freqPlot();
 
 
-private slots:
-    void inputvalue(double);
+//private slots:
+//    void inputvalue(double);
 
 private:
     Ui::freqPlot *ui;
