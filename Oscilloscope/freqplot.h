@@ -16,16 +16,18 @@ class freqPlot : public QWidget
 
 public:
     explicit freqPlot(QWidget *parent = nullptr);
-    OsciSetup *sender;
+   // OsciSetup *sender;
     ~freqPlot();
 
+
 private slots:
-    void inputvalue(double,double);
+    void inputvalue(double);
 
 private:
     Ui::freqPlot *ui;
-    OsciSetup *m_form; //test
-    void createfreqPlot();
+    //OsciSetup *sender;
+    //void createfreqPlot();
+
 };
 
 #endif // FREQPLOT_H

@@ -14,13 +14,18 @@ class OsciSetup : public QWidget
 
 public:
     explicit OsciSetup(QWidget *parent = nullptr);
+    //double pushvalue(double x);
     ~OsciSetup();
 
 signals:
-    void entered(double,double);
+    void entered(double);
 
-private slots:
-    void on_setupButton_clicked();
+//private slots:
+//    void on_setupButton_clicked();
+
+//public slots:
+//    double pushvalue(double x);
+
 
 private:
     Ui::OsciSetup *ui;

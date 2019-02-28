@@ -10,6 +10,8 @@ OsciSetup::OsciSetup(QWidget *parent) :
     ui->setupUi(this);
     ui->osciSetupLabel->setStyleSheet("font-weight:bold");
     ui->osciSetupLabel->setAlignment(Qt::AlignCenter);
+    //connect(ui->setupButton,SIGNAL(clicked()),this,SLOT(pushvalue(double)));
+
 }
 
 OsciSetup::~OsciSetup()
@@ -26,9 +28,12 @@ void OsciSetup::closeEvent(QCloseEvent *event)
     event->accept();
 }
 
-void OsciSetup::on_setupButton_clicked()
-{
-    double volt = ui->voltageEdit->text().toDouble();
-    double time = ui->timeEdit->text().toDouble();
-    emit entered(time, volt);
-}
+
+//double OsciSetup::pushvalue(double x)
+//{
+//    x = ui->timeEdit->text().toDouble();
+//    emit entered(x);
+//    //y = ui->voltageEdit->text().toDouble();
+//    return x;
+
+//}
