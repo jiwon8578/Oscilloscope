@@ -2,9 +2,9 @@
 #define FREQPLOT_H
 
 #include <QWidget>
-#include "oscisetup.h" //test
+#include "oscisetup.h"
 
-class OsciSetup; //test
+class OsciSetup;
 
 namespace Ui {
 class freqPlot;
@@ -16,11 +16,9 @@ class freqPlot : public QWidget
 
 public:
     explicit freqPlot(QWidget *parent = nullptr);
-   // OsciSetup *sender;
     ~freqPlot();
 
 private slots:
-    //void inputvalue(double);
 
     void on_pushButton_clicked();
 

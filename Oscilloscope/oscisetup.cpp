@@ -11,8 +11,12 @@ OsciSetup::OsciSetup(QWidget *parent) :
     ui->setupUi(this);
     ui->osciSetupLabel->setStyleSheet("font-weight:bold");
     ui->osciSetupLabel->setAlignment(Qt::AlignCenter);
-    //connect(ui->setupButton,SIGNAL(clicked()),this,SLOT(pushvolt()));
-   // test = new freqPlot;
+    ui->timeComboBox->addItem("s");
+    ui->timeComboBox->addItem("ms");
+    ui->timeComboBox->addItem("μs");
+    ui->timeComboBox->addItem("nm");
+    ui->voltageComboBox->addItem("v");
+    ui->voltageComboBox->addItem("mv");
 }
 
 OsciSetup::~OsciSetup()
@@ -30,18 +34,33 @@ void OsciSetup::closeEvent(QCloseEvent *event)
 }
 
 
-//QString OsciSetup::pushtime() const
-//{
-//    return ui->timeEdit->text();
-//}
-
-//QString OsciSetup::pushvolt() const
-//{
-//    return ui->comboBox->currentText();
-//}
-
 void OsciSetup::on_setupButton_clicked()
 {
-    time = ui->timeEdit->text().toDouble();
-    volt = ui->voltageEdit->text().toDouble();
+    QString t = ui->timeEdit->text();
+    QString v = ui->voltageEdit->text();
+    if(t=="s")
+    {
+        time = t.toDouble();
+    }
+    else if(t=="ms")
+    {
+        time = t.toDouble()*(10^-2);
+    }
+    else if(t=="μs")
+    {
+        time = t.toDouble()*(10^-6);
+    }
+    else
+    {
+        time = t.toDouble()*(10^-9);
+    }
+
+    if(v=="v")
+    {
+        volt = v.toDouble();
+    }
+    else
+    {
+        volt = v.toDouble()*(10^-2);
+    }
 }
