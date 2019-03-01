@@ -3,6 +3,9 @@
 
 #include <QWidget>
 #include <QCloseEvent>
+#include <QString>
+
+class freqPlot;
 
 namespace Ui {
 class OsciSetup;
@@ -14,21 +17,23 @@ class OsciSetup : public QWidget
 
 public:
     explicit OsciSetup(QWidget *parent = nullptr);
-    //double pushvalue(double x);
     ~OsciSetup();
 
-signals:
-    void entered(double);
 
-//private slots:
-//    void on_setupButton_clicked();
 
 //public slots:
-//    double pushvalue(double x);
+//    QString pushtime() const;
+//    QString pushvolt() const;
 
+//signals:
+//    void timeEntered(double);
+
+private slots:
+    void on_setupButton_clicked();
 
 private:
     Ui::OsciSetup *ui;
+    freqPlot *test;
     void closeEvent(QCloseEvent *event) override;
 };
 
