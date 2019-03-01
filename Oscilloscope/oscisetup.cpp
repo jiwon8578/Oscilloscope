@@ -12,7 +12,7 @@ OsciSetup::OsciSetup(QWidget *parent) :
     ui->osciSetupLabel->setStyleSheet("font-weight:bold");
     ui->osciSetupLabel->setAlignment(Qt::AlignCenter);
     //connect(ui->setupButton,SIGNAL(clicked()),this,SLOT(pushvolt()));
-    test = new freqPlot;
+   // test = new freqPlot;
 }
 
 OsciSetup::~OsciSetup()
@@ -42,8 +42,6 @@ void OsciSetup::closeEvent(QCloseEvent *event)
 
 void OsciSetup::on_setupButton_clicked()
 {
-    test->t = ui->timeEdit->text().toDouble();
-    test->v = ui->voltageEdit->text().toDouble();
-    QMessageBox::about(this,"result","please");
-
+    time = ui->timeEdit->text().toDouble();
+    volt = ui->voltageEdit->text().toDouble();
 }

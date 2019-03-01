@@ -18,22 +18,14 @@ class OsciSetup : public QWidget
 public:
     explicit OsciSetup(QWidget *parent = nullptr);
     ~OsciSetup();
-
-
-
-//public slots:
-//    QString pushtime() const;
-//    QString pushvolt() const;
-
-//signals:
-//    void timeEntered(double);
+    static double time;
+    static double volt;
 
 private slots:
     void on_setupButton_clicked();
 
 private:
     Ui::OsciSetup *ui;
-    freqPlot *test;
     void closeEvent(QCloseEvent *event) override;
 };
 

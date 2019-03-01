@@ -18,8 +18,6 @@ public:
     explicit freqPlot(QWidget *parent = nullptr);
    // OsciSetup *sender;
     ~freqPlot();
-    double t;
-    double v;
 
 private slots:
     //void inputvalue(double);
@@ -28,8 +26,7 @@ private slots:
 
 private:
     Ui::freqPlot *ui;
-    //OsciSetup *sender;
-
+    OsciSetup *sender;
 };
 
 #endif // FREQPLOT_H
