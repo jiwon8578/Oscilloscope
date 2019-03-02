@@ -3,8 +3,8 @@
 #include "qmath.h"
 #include "oscisetup.h"
 
-double OsciSetup::time;
-double OsciSetup::volt;
+//double OsciSetup::time;
+//double OsciSetup::volt;
 
 freqPlot::freqPlot(QWidget *parent) :
     QWidget(parent),
@@ -23,12 +23,12 @@ freqPlot::~freqPlot()
 
 void freqPlot::on_pushButton_clicked()
 {
-    double w = 2*(M_PI)*(1/OsciSetup::time); //각 진동수 생성
-    double Vmax = OsciSetup::volt ;
+    double w = 2*(M_PI)*(1/sender->time); //각 진동수 생성
+    double Vmax = sender->volt ;
     QVector<double> time(500), volt(500);
     for (int i=0; i<500; ++i)
     {
-      time[i] = OsciSetup::time*i;
+      time[i] = i;
       volt[i] = Vmax*sin(w*i); // let's plot a quadratic function
     }
     // create graph and assign data to it:
@@ -53,6 +53,11 @@ void freqPlot::on_pushButton_clicked()
 //    bars1->setData(x, y);
 //    bars1->setPen(Qt::NoPen);
 //    bars1->setBrush(QColor(10, 140, 70, 160));
-    ui->freqCustomPlot->xAxis->grid()->setPen(QPen(QColor(130, 130, 130), 0, Qt::DotLine));
+    ui->freqCustomPlot->xAxis->grid()->setPen(QPen(QColor(140, 140, 140), 1, Qt::DotLine));
+    ui->freqCustomPlot->yAxis->grid()->setPen(QPen(QColor(140, 140, 140), 1, Qt::DotLine));
+    ui->freqCustomPlot->xAxis->grid()->setSubGridPen(QPen(QColor(80, 80, 80), 1, Qt::DotLine));
+    ui->freqCustomPlot->yAxis->grid()->setSubGridPen(QPen(QColor(80, 80, 80), 1, Qt::DotLine));
+    ui->freqCustomPlot->xAxis->grid()->setSubGridVisible(true);
+    ui->freqCustomPlot->yAxis->grid()->setSubGridVisible(true);
     ui->freqCustomPlot->replot();
 }
