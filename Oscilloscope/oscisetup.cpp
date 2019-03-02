@@ -38,15 +38,16 @@ void OsciSetup::on_setupButton_clicked()
 {
     QString t = ui->timeEdit->text();
     QString v = ui->voltageEdit->text();
-    if(t=="s")
+    QString unit_time = ui->timeComboBox->currentText();
+    QString unit_volt = ui->timeComboBox->currentText();
+    if(unit_time=="s")
     {
         time = t.toDouble();
     }
-    else if(t=="ms")
+    else if(unit_time=="ms")
     {
-        time = t.toDouble()*(10^-2);
-    }
-    else if(t=="μs")
+        time = t.toDouble()*(10^-2);}
+    else if(unit_time=="μs")
     {
         time = t.toDouble()*(10^-6);
     }
@@ -55,7 +56,7 @@ void OsciSetup::on_setupButton_clicked()
         time = t.toDouble()*(10^-9);
     }
 
-    if(v=="v")
+    if(unit_volt=="v")
     {
         volt = v.toDouble();
     }
@@ -64,3 +65,4 @@ void OsciSetup::on_setupButton_clicked()
         volt = v.toDouble()*(10^-2);
     }
 }
+

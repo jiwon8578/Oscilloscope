@@ -18,8 +18,8 @@ class OsciSetup : public QWidget
 public:
     explicit OsciSetup(QWidget *parent = nullptr);
     ~OsciSetup();
-    double time;
-    double volt;
+    static double time;
+    static double volt;
 
 private slots:
     void on_setupButton_clicked();

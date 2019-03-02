@@ -3,8 +3,8 @@
 #include "qmath.h"
 #include "oscisetup.h"
 
-//double OsciSetup::time;
-//double OsciSetup::volt;
+double OsciSetup::time;
+double OsciSetup::volt;
 
 freqPlot::freqPlot(QWidget *parent) :
     QWidget(parent),
@@ -23,17 +23,20 @@ freqPlot::~freqPlot()
 
 void freqPlot::on_pushButton_clicked()
 {
-    double w = 2*(M_PI)*(1/sender->time); //각 진동수 생성
-    double Vmax = sender->volt ;
-    QVector<double> time(500), volt(500);
+    //주파수를 얻으면 주기를 알 수 있다?
+    double t=4.5; // 4.5DIV
+    double Vmax = OsciSetup::volt ;
+    double T=t*OsciSetup::time; // 4.5DIV*()/DIV = 주기
+    double w = 2*(M_PI)*(1/T); //각 진동수 생성
+    QVector<double> time(500), y(500);
     for (int i=0; i<500; ++i)
     {
-      time[i] = i;
-      volt[i] = Vmax*sin(w*i); // let's plot a quadratic function
+      time[i] = i*OsciSetup::time;
+      y[i] = Vmax*sin(w*time[i]); // let's plot a quadratic function
     }
     // create graph and assign data to it:
     ui->freqCustomPlot->addGraph();
-    ui->freqCustomPlot->graph(0)->setData(time, volt);
+    ui->freqCustomPlot->graph(0)->setData(time, y);
     // give the axes some labels:
     ui->freqCustomPlot->xAxis->setLabel("Time");
     ui->freqCustomPlot->yAxis->setLabel("Value");
