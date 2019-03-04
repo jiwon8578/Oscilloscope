@@ -16,16 +16,17 @@ class freqPlot : public QWidget
 
 public:
     explicit freqPlot(QWidget *parent = nullptr);
-    QLineEdit *test;
     ~freqPlot();
 
-private slots:
 
+private slots:
+    //void freqPlot::graphClicked(QCPAbstractPlottable *plottable, int dataIndex);
     void on_pushButton_clicked();
 
 private:
     Ui::freqPlot *ui;
     OsciSetup *sender;
+    void plotMousePress(QMouseEvent *event);
 };
 
 #endif // FREQPLOT_H

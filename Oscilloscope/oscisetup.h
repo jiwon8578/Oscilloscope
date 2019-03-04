@@ -20,11 +20,12 @@ public:
     ~OsciSetup();
     static double time;
     static double volt;
-    QString timepush() const;
+    static QString timelabel;
     QString timeunitpush() const;
 
-public slots:
-    void textChanged(QString);
+
+//public slots:
+//    void textChanged(QString);
 private slots:
     void on_setupButton_clicked();
 
