@@ -4,7 +4,7 @@
 #include <QWidget>
 #include <QCloseEvent>
 #include <QString>
-
+#include <QLineEdit>
 class freqPlot;
 
 namespace Ui {
@@ -20,13 +20,19 @@ public:
     ~OsciSetup();
     static double time;
     static double volt;
+    QString timepush() const;
+    QString timeunitpush() const;
 
+public slots:
+    void textChanged(QString);
 private slots:
     void on_setupButton_clicked();
 
 private:
     Ui::OsciSetup *ui;
+    freqPlot *test;
     void closeEvent(QCloseEvent *event) override;
+
 };
 
 #endif // OSCISETUP_H

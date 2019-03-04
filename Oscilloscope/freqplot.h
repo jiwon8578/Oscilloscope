@@ -16,6 +16,7 @@ class freqPlot : public QWidget
 
 public:
     explicit freqPlot(QWidget *parent = nullptr);
+    QLineEdit *test;
     ~freqPlot();
 
 private slots:

@@ -15,14 +15,20 @@
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
-    <widget class="QCustomPlot" name="freqCustomPlot" native="true"/>
+    <widget class="QLineEdit" name="time"/>
    </item>
-   <item row="1" column="0">
+   <item row="2" column="0">
     <widget class="QPushButton" name="pushButton">
      <property name="text">
       <string>Start</string>
      </property>
     </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QLineEdit" name="lineEdit_2"/>
+   </item>
+   <item row="1" column="0" colspan="2">
+    <widget class="QCustomPlot" name="freqCustomPlot" native="true"/>
    </item>
   </layout>
  </widget>

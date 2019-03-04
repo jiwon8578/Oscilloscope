@@ -17,12 +17,37 @@ OsciSetup::OsciSetup(QWidget *parent) :
     ui->timeComboBox->addItem("nm");
     ui->voltageComboBox->addItem("v");
     ui->voltageComboBox->addItem("mv");
+    test = new freqPlot;
+    connect(ui->timeEdit, SIGNAL(textChanged(QString)), this, SLOT(textChanged(QString)));
+
 }
 
 OsciSetup::~OsciSetup()
 {
     delete ui;
 }
+
+QString OsciSetup::timepush() const
+{
+    QString ttt = ui->timeEdit->text();
+    ui->timeEdit->setText(ttt);
+    return ttt;
+}
+
+QString OsciSetup::timeunitpush() const
+{
+    return ui->timeComboBox->currentText();
+}
+
+void OsciSetup::textChanged(QString str)
+{
+    ui_test->time->setText(str);
+}
+
+//void OsciSetup::textChanged(QString str)
+//{
+//    rec->
+//}
 
 
 bool MainWindow::isOsciSetupOpen;
