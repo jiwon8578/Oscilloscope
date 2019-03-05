@@ -22,6 +22,7 @@ private slots:
     void transducerSetup();
     void ttSetup();
 
+
 private:
     Ui::MainWindow *ui;
     //File을 만들어볼게요.
@@ -118,6 +119,7 @@ private:
     void createActions();
     void loadSubWindow_plot(QWidget *widget);
     void loadSubWindow_setup(QWidget *widget);
+
 
 
 };
