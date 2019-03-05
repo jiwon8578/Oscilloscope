@@ -21,13 +21,20 @@ public:
     static double time;
     static double volt;
     static QString timelabel;
+    static QString voltlabel;
+    static QString timeunitlabel;
+    static QString voltunitlabel;
     QString timeunitpush() const;
 
-
+signals:
+    void entered();
 //public slots:
 //    void textChanged(QString);
 private slots:
     void on_setupButton_clicked();
+//    QString timeunitpush() const;
+
+    void on_triggerToZeroBtn_clicked();
 
 private:
     Ui::OsciSetup *ui;

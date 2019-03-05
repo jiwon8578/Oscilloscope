@@ -6,6 +6,9 @@
 double OsciSetup::time;
 double OsciSetup::volt;
 QString OsciSetup::timelabel;
+QString OsciSetup::voltlabel;
+QString OsciSetup::timeunitlabel;
+QString OsciSetup::voltunitlabel;
 
 freqPlot::freqPlot(QWidget *parent) :
     QWidget(parent),
@@ -76,7 +79,8 @@ void freqPlot::on_pushButton_clicked()
     ui->freqCustomPlot->replot();
 
     //time information
-      ui->time->setText(OsciSetup::timelabel+sender->timeunitpush());
+    ui->time->setText(OsciSetup::timelabel+OsciSetup::timeunitlabel);
+    ui->volt->setText(OsciSetup::voltlabel+OsciSetup::voltunitlabel);
 }
 
 //void freqPlot::plotMousePress(QMouseEvent *event)

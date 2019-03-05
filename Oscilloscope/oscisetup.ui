@@ -565,5 +565,22 @@
   </layout>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>setupButton</sender>
+   <signal>clicked()</signal>
+   <receiver>timeComboBox</receiver>
+   <slot>update()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>397</x>
+     <y>587</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>372</x>
+     <y>45</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
