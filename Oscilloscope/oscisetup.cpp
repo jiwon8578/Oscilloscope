@@ -81,10 +81,15 @@ void OsciSetup::on_setupButton_clicked()
     {
         volt = v.toDouble();
     }
-    else
+    else if(unit_volt=="mv")
     {
         volt = v.toDouble()*(10^-2);
     }
+    else
+    {
+        QMessageBox::warning(this,"Select Unit","you must select volt-unit");
+    }
+
 
 }
 
