@@ -18,8 +18,8 @@ MainWindow::MainWindow(QWidget *parent) :
     this->setStyleSheet("background-color: #454548;"); //background 색상 변경
     setCentralWidget(ui->mdiArea);
 
-    createMenus();
-    createActions();
+    //createMenus();
+    //createActions();
 
     loadSubWindow_plot(new freqPlot(this));
     loadSubWindow_plot(new fftPlot(this));
@@ -36,6 +36,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+/*
 void MainWindow::createMenus()
 {
     menuBar()->setStyleSheet("background-color: #454548"); //menubar 색상 변경
@@ -148,6 +149,7 @@ void MainWindow::createMenus()
     contentsAct = helpMenu->addAction("Contents");
     aboutAct = helpMenu->addAction("About..");
 }
+*/
 
 void MainWindow::about()
 {
