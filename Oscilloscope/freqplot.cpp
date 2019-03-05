@@ -37,13 +37,13 @@ freqPlot::~freqPlot()
 
 void freqPlot::on_pushButton_clicked()
 {
-    //주파수를 얻으면 주기를 알 수 있다?
+    //클럭을 통해 한 주기 알 수 있음
     double t=4.5; // 4.5DIV
     double Vmax = OsciSetup::volt ;
-    double T=t*OsciSetup::time; // 4.5DIV*()/DIV = 주기
+    double T=t*OsciSetup::time; // 4.5DIV*time/DIV = 주기
     double w = 2*(M_PI)*(1/T); //각 진동수 생성
     QVector<double> time(500), y(500);
-    for (int i=0; i<500; ++i)
+    for (int i=0; i<10; ++i)
     {
       time[i] = i*OsciSetup::time;
       y[i] = Vmax*sin(w*time[i]); // let's plot a quadratic function
@@ -55,8 +55,8 @@ void freqPlot::on_pushButton_clicked()
     ui->freqCustomPlot->xAxis->setLabel("Time");
     ui->freqCustomPlot->yAxis->setLabel("Value");
     // set axes ranges, so we see all data:
-    ui->freqCustomPlot->xAxis->setRange(0, 100);
-    ui->freqCustomPlot->yAxis->setRange(-100, 100);
+    ui->freqCustomPlot->xAxis->setRange(0, 10);
+    ui->freqCustomPlot->yAxis->setRange(-10, 10);
     // make grid
 //    QVector<double> x(501), y(501);
 //    for (int j=0; j<500; ++j)
@@ -70,12 +70,12 @@ void freqPlot::on_pushButton_clicked()
 //    bars1->setData(x, y);
 //    bars1->setPen(Qt::NoPen);
 //    bars1->setBrush(QColor(10, 140, 70, 160));
-    ui->freqCustomPlot->xAxis->grid()->setPen(QPen(QColor(140, 140, 140), 1, Qt::DotLine));
-    ui->freqCustomPlot->yAxis->grid()->setPen(QPen(QColor(140, 140, 140), 1, Qt::DotLine));
-    ui->freqCustomPlot->xAxis->grid()->setSubGridPen(QPen(QColor(80, 80, 80), 1, Qt::DotLine));
-    ui->freqCustomPlot->yAxis->grid()->setSubGridPen(QPen(QColor(80, 80, 80), 1, Qt::DotLine));
-    ui->freqCustomPlot->xAxis->grid()->setSubGridVisible(true);
-    ui->freqCustomPlot->yAxis->grid()->setSubGridVisible(true);
+//    ui->freqCustomPlot->xAxis->grid()->setPen(QPen(QColor(140, 140, 140), 1, Qt::DotLine));
+//    ui->freqCustomPlot->yAxis->grid()->setPen(QPen(QColor(140, 140, 140), 1, Qt::DotLine));
+//    ui->freqCustomPlot->xAxis->grid()->setSubGridPen(QPen(QColor(80, 80, 80), 1, Qt::DotLine));
+//    ui->freqCustomPlot->yAxis->grid()->setSubGridPen(QPen(QColor(80, 80, 80), 1, Qt::DotLine));
+//    ui->freqCustomPlot->xAxis->grid()->setSubGridVisible(true);
+//    ui->freqCustomPlot->yAxis->grid()->setSubGridVisible(true);
     ui->freqCustomPlot->replot();
 
     //time information
