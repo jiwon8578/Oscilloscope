@@ -8,6 +8,7 @@
 #include "oscisetup.h"
 #include "transducersetupdialog.h"
 #include "testtargetsetupdialog.h"
+#include "fftsetup.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -24,7 +25,7 @@ MainWindow::MainWindow(QWidget *parent) :
     loadSubWindow_plot(new fftPlot(this));
 
     loadSubWindow_setup(new OsciSetup(this));
-
+    loadSubWindow_setup(new fftsetup(this));
     setWindowTitle("Oscilloscope");
     resize(1920, 1080);
 }
@@ -195,6 +196,7 @@ void MainWindow::loadSubWindow_setup(QWidget *widget) //mdiArea에 sub window를
     window->show();
     isOsciSetupOpen = true;
 }
+
 
 
 

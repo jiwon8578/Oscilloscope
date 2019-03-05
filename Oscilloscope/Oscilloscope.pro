@@ -33,7 +33,8 @@ SOURCES += \
     freqplot.cpp \
     oscisetup.cpp \
     transducersetupdialog.cpp \
-    testtargetsetupdialog.cpp
+    testtargetsetupdialog.cpp \
+    fftsetup.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -43,7 +44,8 @@ HEADERS += \
     freqplot.h \
     oscisetup.h \
     transducersetupdialog.h \
-    testtargetsetupdialog.h
+    testtargetsetupdialog.h \
+    fftsetup.h
 
 FORMS += \
         mainwindow.ui \
@@ -52,7 +54,8 @@ FORMS += \
     freqplot.ui \
     oscisetup.ui \
     transducersetupdialog.ui \
-    testtargetsetupdialog.ui
+    testtargetsetupdialog.ui \
+    fftsetup.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
