@@ -29,13 +29,106 @@
      <height>26</height>
     </rect>
    </property>
+   <property name="palette">
+    <palette>
+     <active>
+      <colorrole role="WindowText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Text">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="PlaceholderText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="128">
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </active>
+     <inactive>
+      <colorrole role="WindowText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Text">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="PlaceholderText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="128">
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </inactive>
+     <disabled>
+      <colorrole role="WindowText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>200</red>
+         <green>200</green>
+         <blue>200</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Text">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>189</red>
+         <green>189</green>
+         <blue>189</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="PlaceholderText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="128">
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </disabled>
+    </palette>
+   </property>
    <widget class="QMenu" name="menuFile">
     <property name="title">
      <string>File</string>
     </property>
     <addaction name="actionLoad_Setup"/>
     <addaction name="actionSave_Setup"/>
+    <addaction name="separator"/>
     <addaction name="actionOpen_File"/>
+    <addaction name="separator"/>
     <addaction name="actionSave_File"/>
     <addaction name="actionPrint"/>
     <addaction name="actionExit"/>
@@ -46,8 +139,10 @@
     </property>
     <addaction name="actionOscilloscope"/>
     <addaction name="actionOscilloscope_Setup_Window"/>
+    <addaction name="separator"/>
     <addaction name="actionFFT_Waveform_Window"/>
     <addaction name="actionFFT_Setup_Window"/>
+    <addaction name="separator"/>
     <addaction name="actionTool_Bar"/>
     <addaction name="actionArrange_All_Window"/>
     <addaction name="actionFull_Screen"/>
@@ -96,9 +191,51 @@
     <property name="title">
      <string>Measure</string>
     </property>
-    <addaction name="actionOscilloscope_Vertical"/>
-    <addaction name="actionOscilliscope_Horizontal"/>
-    <addaction name="actionFFT_Measurement"/>
+    <widget class="QMenu" name="menuOscilloscope_Vertical">
+     <property name="title">
+      <string>Oscilloscope Vertical</string>
+     </property>
+     <addaction name="actionMaximum"/>
+     <addaction name="actionMinimum"/>
+     <addaction name="actionPeak_to_Peak"/>
+     <addaction name="actionTop"/>
+     <addaction name="actionBase"/>
+     <addaction name="actionRMS"/>
+     <addaction name="actionAmplitude"/>
+     <addaction name="actionMean"/>
+     <addaction name="actionCycle_MEan"/>
+     <addaction name="actionPreShoot"/>
+    </widget>
+    <widget class="QMenu" name="menuOscilliscope_Horizontal">
+     <property name="title">
+      <string>Oscilliscope Horizontal</string>
+     </property>
+     <addaction name="actionPeriod"/>
+     <addaction name="actionFrequency"/>
+     <addaction name="actionRise_Time"/>
+     <addaction name="actionFall_Time"/>
+     <addaction name="action_Duty_Cycle"/>
+     <addaction name="action_Duty_Cycle_2"/>
+     <addaction name="action_Pulse_Width"/>
+     <addaction name="action_Pulse_Width_2"/>
+    </widget>
+    <widget class="QMenu" name="menuFFT_Measurement">
+     <property name="title">
+      <string>FFT Measurement</string>
+     </property>
+     <addaction name="actionSNR"/>
+     <addaction name="actionTHD"/>
+     <addaction name="actionENOB"/>
+     <addaction name="actionSFDR"/>
+     <addaction name="actionSINAD"/>
+     <addaction name="actionTotal_Power"/>
+     <addaction name="actionPeak_Frequency"/>
+    </widget>
+    <addaction name="menuOscilloscope_Vertical"/>
+    <addaction name="menuOscilliscope_Horizontal"/>
+    <addaction name="separator"/>
+    <addaction name="menuFFT_Measurement"/>
+    <addaction name="separator"/>
     <addaction name="actionClear_Display"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
@@ -288,21 +425,6 @@
     <string>Auto Setup</string>
    </property>
   </action>
-  <action name="actionOscilloscope_Vertical">
-   <property name="text">
-    <string>Oscilloscope Vertical</string>
-   </property>
-  </action>
-  <action name="actionOscilliscope_Horizontal">
-   <property name="text">
-    <string>Oscilliscope Horizontal</string>
-   </property>
-  </action>
-  <action name="actionFFT_Measurement">
-   <property name="text">
-    <string>FFT Measurement</string>
-   </property>
-  </action>
   <action name="actionClear_Display">
    <property name="text">
     <string>Clear Display</string>
@@ -321,6 +443,131 @@
   <action name="actionHomepage">
    <property name="text">
     <string>Homepage</string>
+   </property>
+  </action>
+  <action name="actionMaximum">
+   <property name="text">
+    <string>Maximum</string>
+   </property>
+  </action>
+  <action name="actionMinimum">
+   <property name="text">
+    <string>Minimum</string>
+   </property>
+  </action>
+  <action name="actionPeak_to_Peak">
+   <property name="text">
+    <string>Peak to Peak</string>
+   </property>
+  </action>
+  <action name="actionTop">
+   <property name="text">
+    <string>Top</string>
+   </property>
+  </action>
+  <action name="actionBase">
+   <property name="text">
+    <string>Base</string>
+   </property>
+  </action>
+  <action name="actionRMS">
+   <property name="text">
+    <string>RMS</string>
+   </property>
+  </action>
+  <action name="actionAmplitude">
+   <property name="text">
+    <string>Amplitude</string>
+   </property>
+  </action>
+  <action name="actionMean">
+   <property name="text">
+    <string>Mean</string>
+   </property>
+  </action>
+  <action name="actionCycle_MEan">
+   <property name="text">
+    <string>Cycle Mean</string>
+   </property>
+  </action>
+  <action name="actionPreShoot">
+   <property name="text">
+    <string>PreShoot</string>
+   </property>
+  </action>
+  <action name="actionPeriod">
+   <property name="text">
+    <string>Period</string>
+   </property>
+  </action>
+  <action name="actionFrequency">
+   <property name="text">
+    <string>Frequency</string>
+   </property>
+  </action>
+  <action name="actionRise_Time">
+   <property name="text">
+    <string>Rise Time</string>
+   </property>
+  </action>
+  <action name="actionFall_Time">
+   <property name="text">
+    <string>Fall Time</string>
+   </property>
+  </action>
+  <action name="action_Duty_Cycle">
+   <property name="text">
+    <string>+Duty Cycle</string>
+   </property>
+  </action>
+  <action name="action_Duty_Cycle_2">
+   <property name="text">
+    <string>-Duty Cycle</string>
+   </property>
+  </action>
+  <action name="action_Pulse_Width">
+   <property name="text">
+    <string>+Pulse Width</string>
+   </property>
+  </action>
+  <action name="action_Pulse_Width_2">
+   <property name="text">
+    <string>-Pulse Width</string>
+   </property>
+  </action>
+  <action name="actionSNR">
+   <property name="text">
+    <string>SNR</string>
+   </property>
+  </action>
+  <action name="actionTHD">
+   <property name="text">
+    <string>THD</string>
+   </property>
+  </action>
+  <action name="actionENOB">
+   <property name="text">
+    <string>ENOB</string>
+   </property>
+  </action>
+  <action name="actionSFDR">
+   <property name="text">
+    <string>SFDR</string>
+   </property>
+  </action>
+  <action name="actionSINAD">
+   <property name="text">
+    <string>SINAD</string>
+   </property>
+  </action>
+  <action name="actionTotal_Power">
+   <property name="text">
+    <string>Total Power</string>
+   </property>
+  </action>
+  <action name="actionPeak_Frequency">
+   <property name="text">
+    <string>Peak Frequency</string>
    </property>
   </action>
  </widget>
