@@ -4,6 +4,9 @@
 #include <QMainWindow>
 #include <QMdiSubWindow>
 #include "fftsetup.h"
+#include "fftplot.h"
+#include "freqplot.h"
+#include "oscisetup.h"
 
 namespace Ui {
 class MainWindow;
@@ -22,6 +25,12 @@ private slots:
     void on_actionOscilloscope_triggered();
     void on_actionOscilloscope_Setup_triggered();
 
+    void on_actionOscilloscope_Setup_Window_triggered();
+
+    void on_actionFFT_Waveform_Window_triggered();
+
+    void on_actionFFT_Setup_Window_triggered();
+
 private:
     Ui::MainWindow *ui;
 
@@ -29,11 +38,20 @@ private:
     void loadSubWindow_setup(QWidget *widget);
     void loadSubWindow_fftsetup(QWidget *widget);
 
+    int osWaveformWinCount = 0;
     int osSetupWinCount = 0;
+    int fftWaveformWinCount = 0;
+    int fftSetupWinCount = 0;
 
+    QMdiSubWindow *osWaveformWin;
     QMdiSubWindow *osSetupWin;
-    fftsetup *fftSetupObj = new fftsetup;
+    QMdiSubWindow *fftWaveformWin;
+    QMdiSubWindow *fftSetupWin;
 
+    freqPlot *freqPlotObj = new freqPlot;
+    OsciSetup *osciSetupObj = new OsciSetup;
+    fftPlot *fftPlotObj = new fftPlot;
+    fftsetup *fftSetupObj = new fftsetup;
 };
 
 #endif // MAINWINDOW_H

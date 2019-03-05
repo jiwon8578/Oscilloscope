@@ -17,18 +17,23 @@ MainWindow::MainWindow(QWidget *parent) :
     this->setStyleSheet("background-color: #454548;"); //background 색상 변경
     setCentralWidget(ui->mdiArea);
 
-    //createMenus();
-    //createActions();
 
-    osSetupWin = ui->mdiArea->addSubWindow(fftSetupObj);
+    osWaveformWin = ui->mdiArea->addSubWindow(freqPlotObj);
+    osWaveformWin->resize(400, 400);
+    osWaveformWin->show();
+
+    osSetupWin = ui->mdiArea->addSubWindow(osciSetupObj);
     osSetupWin->resize(400, 400);
     osSetupWin->show();
+    isOsciSetupOpen = true;
 
-    loadSubWindow_plot(new freqPlot(this));
-    //loadSubWindow_plot(new fftPlot(this));
+    fftWaveformWin = ui->mdiArea->addSubWindow(fftPlotObj);
+    fftWaveformWin->resize(400, 400);
+    fftWaveformWin->show();
 
-    loadSubWindow_setup(new OsciSetup(this));
-    loadSubWindow_setup(new fftsetup(this));
+    fftSetupWin = ui->mdiArea->addSubWindow(fftSetupObj);
+    fftSetupWin->resize(400, 400);
+    fftSetupWin->show();
 
     setWindowTitle("Oscilloscope");
     resize(1920, 1080);
@@ -56,12 +61,12 @@ void MainWindow::loadSubWindow_setup(QWidget *widget) //mdiArea에 sub window를
 
 void MainWindow::on_actionOscilloscope_triggered()
 {
-    if(osSetupWinCount % 2) {
-            osSetupWin->show();
+    if(osWaveformWinCount % 2) {
+            osWaveformWin->show();
         } else {
-            osSetupWin->hide();
+            osWaveformWin->hide();
         }
-        osSetupWinCount++;
+        osWaveformWinCount++;
 }
 
 void MainWindow::on_actionOscilloscope_Setup_triggered()
@@ -69,4 +74,36 @@ void MainWindow::on_actionOscilloscope_Setup_triggered()
     if(isOsciSetupOpen == false) {
         loadSubWindow_setup(new OsciSetup(this));
     }
+}
+
+void MainWindow::on_actionOscilloscope_Setup_Window_triggered()
+{
+    if(osSetupWinCount % 2) {
+        osSetupWin->show();
+    } else {
+        osSetupWin->hide();
+    }
+    osSetupWinCount++;
+}
+
+
+
+void MainWindow::on_actionFFT_Waveform_Window_triggered()
+{
+    if(fftWaveformWinCount % 2) {
+        fftWaveformWin->show();
+    } else {
+        fftWaveformWin->hide();
+    }
+    fftWaveformWinCount++;
+}
+
+void MainWindow::on_actionFFT_Setup_Window_triggered()
+{
+    if(fftSetupWinCount % 2) {
+        fftSetupWin->show();
+    } else {
+        fftSetupWin->hide();
+    }
+    fftSetupWinCount++;
 }
