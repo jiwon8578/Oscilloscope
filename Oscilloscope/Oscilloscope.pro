@@ -27,7 +27,6 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    aboutdialog.cpp \
     qcustomplot.cpp \
     fftplot.cpp \
     freqplot.cpp \
@@ -38,7 +37,6 @@ SOURCES += \
 
 HEADERS += \
         mainwindow.h \
-    aboutdialog.h \
     qcustomplot.h \
     fftplot.h \
     freqplot.h \
@@ -49,7 +47,6 @@ HEADERS += \
 
 FORMS += \
         mainwindow.ui \
-    aboutdialog.ui \
     fftplot.ui \
     freqplot.ui \
     oscisetup.ui \
