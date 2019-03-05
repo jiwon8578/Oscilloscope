@@ -18,6 +18,8 @@ MainWindow::MainWindow(QWidget *parent) :
     setCentralWidget(ui->mdiArea);
 
 
+    osWaveformWinCount = 0;
+
     osWaveformWin = ui->mdiArea->addSubWindow(freqPlotObj);
     osWaveformWin->resize(400, 400);
     osWaveformWin->show();
@@ -64,17 +66,11 @@ void MainWindow::on_actionOscilloscope_triggered()
     if(osWaveformWinCount % 2) {
             osWaveformWin->show();
         } else {
-            osWaveformWin->hide();
+            osWaveformWin->close();
         }
         osWaveformWinCount++;
 }
 
-void MainWindow::on_actionOscilloscope_Setup_triggered()
-{
-    if(isOsciSetupOpen == false) {
-        loadSubWindow_setup(new OsciSetup(this));
-    }
-}
 
 void MainWindow::on_actionOscilloscope_Setup_Window_triggered()
 {
@@ -85,7 +81,6 @@ void MainWindow::on_actionOscilloscope_Setup_Window_triggered()
     }
     osSetupWinCount++;
 }
-
 
 
 void MainWindow::on_actionFFT_Waveform_Window_triggered()
@@ -106,4 +101,11 @@ void MainWindow::on_actionFFT_Setup_Window_triggered()
         fftSetupWin->hide();
     }
     fftSetupWinCount++;
+}
+
+void MainWindow::on_actionOscilloscope_Setup_triggered()
+{
+    if(isOsciSetupOpen == false) {
+        loadSubWindow_setup(new OsciSetup(this));
+    }
 }

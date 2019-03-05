@@ -27,6 +27,7 @@ private:
     Ui::freqPlot *ui;
     OsciSetup *sender;
     void plotMousePress(QMouseEvent *event);
+    void closeEvent(QCloseEvent *event) override;
 };
 
 #endif // FREQPLOT_H

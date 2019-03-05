@@ -20,6 +20,8 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     static bool isOsciSetupOpen;
+    static QMdiSubWindow *osWaveformWin;
+    static int osWaveformWinCount;
 
 private slots:
     void on_actionOscilloscope_triggered();
@@ -38,12 +40,12 @@ private:
     void loadSubWindow_setup(QWidget *widget);
     void loadSubWindow_fftsetup(QWidget *widget);
 
-    int osWaveformWinCount = 0;
+
     int osSetupWinCount = 0;
     int fftWaveformWinCount = 0;
     int fftSetupWinCount = 0;
 
-    QMdiSubWindow *osWaveformWin;
+
     QMdiSubWindow *osSetupWin;
     QMdiSubWindow *fftWaveformWin;
     QMdiSubWindow *fftSetupWin;

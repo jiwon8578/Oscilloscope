@@ -2,6 +2,8 @@
 #include "ui_freqplot.h"
 #include "qmath.h"
 #include "oscisetup.h"
+#include "mainwindow.h"
+#include <QMdiSubWindow>
 
 double OsciSetup::time;
 double OsciSetup::volt;
@@ -83,6 +85,17 @@ void freqPlot::on_pushButton_clicked()
     ui->volt->setText(OsciSetup::voltlabel+OsciSetup::voltunitlabel);
 }
 
+QMdiSubWindow *MainWindow::osWaveformWin;
+int MainWindow::osWaveformWinCount;
+
+void freqPlot::closeEvent(QCloseEvent *event)
+{
+    MainWindow::osWaveformWin->hide();
+    MainWindow::osWaveformWinCount = 1;
+    event->ignore();
+    MainWindow::osWaveformWinCount++;
+
+}
 //void freqPlot::plotMousePress(QMouseEvent *event)
 //{
 //    QCPAbstractPlottable *plottable = plottableAt(event->pos());
