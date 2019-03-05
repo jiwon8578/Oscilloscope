@@ -39,13 +39,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::osciSetupFunc()
-{
-    if(isOsciSetupOpen == false) {
-        loadSubWindow_setup(new OsciSetup(this));
-    }
-}
-
 void MainWindow::loadSubWindow_plot(QWidget *widget) //mdiArea에 sub window를 띄우는 함수 - plot용
 {
     auto window = ui->mdiArea->addSubWindow(widget);
@@ -61,9 +54,6 @@ void MainWindow::loadSubWindow_setup(QWidget *widget) //mdiArea에 sub window를
     isOsciSetupOpen = true;
 }
 
-
-
-
 void MainWindow::on_actionOscilloscope_triggered()
 {
     if(osSetupWinCount % 2) {
@@ -72,4 +62,11 @@ void MainWindow::on_actionOscilloscope_triggered()
             osSetupWin->hide();
         }
         osSetupWinCount++;
+}
+
+void MainWindow::on_actionOscilloscope_Setup_triggered()
+{
+    if(isOsciSetupOpen == false) {
+        loadSubWindow_setup(new OsciSetup(this));
+    }
 }

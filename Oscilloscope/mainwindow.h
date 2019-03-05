@@ -19,9 +19,8 @@ public:
     static bool isOsciSetupOpen;
 
 private slots:
-    void osciSetupFunc();
-
     void on_actionOscilloscope_triggered();
+    void on_actionOscilloscope_Setup_triggered();
 
 private:
     Ui::MainWindow *ui;
