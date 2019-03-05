@@ -178,7 +178,6 @@ void MainWindow::createActions()
     connect(osSetup, &QAction::triggered, this, &MainWindow::osciSetupFunc);
     connect(transSetup, &QAction::triggered, this, &MainWindow::transducerSetup);
     connect(testTargetSetup, &QAction::triggered, this, &MainWindow::ttSetup);
-
 }
 
 
@@ -196,7 +195,6 @@ void MainWindow::loadSubWindow_setup(QWidget *widget) //mdiArea에 sub window를
     window->show();
     isOsciSetupOpen = true;
 }
-
 
 
 
