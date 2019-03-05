@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>536</width>
+    <height>457</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -25,10 +25,104 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>400</width>
+     <width>536</width>
      <height>26</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionLoad_Setup"/>
+    <addaction name="actionSave_Setup"/>
+    <addaction name="actionOpen_File"/>
+    <addaction name="actionSave_File"/>
+    <addaction name="actionPrint"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuView">
+    <property name="title">
+     <string>View</string>
+    </property>
+    <addaction name="actionOscilloscope"/>
+    <addaction name="actionOscilloscope_Setup_Window"/>
+    <addaction name="actionFFT_Waveform_Window"/>
+    <addaction name="actionFFT_Setup_Window"/>
+    <addaction name="actionTool_Bar"/>
+    <addaction name="actionArrange_All_Window"/>
+    <addaction name="actionFull_Screen"/>
+   </widget>
+   <widget class="QMenu" name="menuSetup">
+    <property name="title">
+     <string>Setup</string>
+    </property>
+    <addaction name="actionOscilloscope_Setup"/>
+    <addaction name="actionFFT_Analyzer"/>
+    <addaction name="actionAll_Setup_Reset"/>
+   </widget>
+   <widget class="QMenu" name="menuUtility">
+    <property name="title">
+     <string>Utility</string>
+    </property>
+    <addaction name="actionTransducer_Setup"/>
+    <addaction name="actionTest_Target_Setup"/>
+    <addaction name="actionScreen_Capture"/>
+    <addaction name="actionDelete_Setup"/>
+   </widget>
+   <widget class="QMenu" name="menuCursor">
+    <property name="title">
+     <string>Cursor</string>
+    </property>
+    <addaction name="actionNone"/>
+    <addaction name="actionCross"/>
+    <addaction name="actionVertical"/>
+    <addaction name="actionHorizontal"/>
+   </widget>
+   <widget class="QMenu" name="menuAcquire">
+    <property name="title">
+     <string>Acquire</string>
+    </property>
+    <addaction name="actionStart"/>
+    <addaction name="actionStop"/>
+    <addaction name="separator"/>
+    <addaction name="actionZoon_in"/>
+    <addaction name="actionZoom_out"/>
+    <addaction name="separator"/>
+    <addaction name="actionAcquisition"/>
+    <addaction name="actionInterpolation"/>
+    <addaction name="actionAuto_Setup"/>
+   </widget>
+   <widget class="QMenu" name="menuMeasure">
+    <property name="title">
+     <string>Measure</string>
+    </property>
+    <addaction name="actionOscilloscope_Vertical"/>
+    <addaction name="actionOscilliscope_Horizontal"/>
+    <addaction name="actionFFT_Measurement"/>
+    <addaction name="actionClear_Display"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <widget class="QMenu" name="menuAbout">
+     <property name="title">
+      <string>About</string>
+     </property>
+     <addaction name="actionUpdate"/>
+     <addaction name="actionHomepage"/>
+    </widget>
+    <addaction name="actionContents"/>
+    <addaction name="menuAbout"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuView"/>
+   <addaction name="menuSetup"/>
+   <addaction name="menuUtility"/>
+   <addaction name="menuCursor"/>
+   <addaction name="menuAcquire"/>
+   <addaction name="menuMeasure"/>
+   <addaction name="menuHelp"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -39,6 +133,196 @@
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionLoad_Setup">
+   <property name="text">
+    <string>Load Setup</string>
+   </property>
+  </action>
+  <action name="actionSave_Setup">
+   <property name="text">
+    <string>Save Setup</string>
+   </property>
+  </action>
+  <action name="actionOpen_File">
+   <property name="text">
+    <string>Open File</string>
+   </property>
+  </action>
+  <action name="actionSave_File">
+   <property name="text">
+    <string>Save File</string>
+   </property>
+  </action>
+  <action name="actionPrint">
+   <property name="text">
+    <string>Print</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionOscilloscope">
+   <property name="text">
+    <string>Oscilloscope Waveform Window</string>
+   </property>
+  </action>
+  <action name="actionOscilloscope_Setup_Window">
+   <property name="text">
+    <string>Oscilloscope Setup Window</string>
+   </property>
+  </action>
+  <action name="actionFFT_Waveform_Window">
+   <property name="text">
+    <string>FFT Waveform Window</string>
+   </property>
+  </action>
+  <action name="actionFFT_Setup_Window">
+   <property name="text">
+    <string>FFT Setup Window</string>
+   </property>
+  </action>
+  <action name="actionTool_Bar">
+   <property name="text">
+    <string>Tool Bar</string>
+   </property>
+  </action>
+  <action name="actionArrange_All_Window">
+   <property name="text">
+    <string>Arrange All Window</string>
+   </property>
+  </action>
+  <action name="actionFull_Screen">
+   <property name="text">
+    <string>Full Screen</string>
+   </property>
+  </action>
+  <action name="actionOscilloscope_Setup">
+   <property name="text">
+    <string>Oscilloscope Setup</string>
+   </property>
+  </action>
+  <action name="actionFFT_Analyzer">
+   <property name="text">
+    <string>FFT Analyzer Setup</string>
+   </property>
+  </action>
+  <action name="actionAll_Setup_Reset">
+   <property name="text">
+    <string>All Setup Reset</string>
+   </property>
+  </action>
+  <action name="actionTransducer_Setup">
+   <property name="text">
+    <string>Transducer Setup</string>
+   </property>
+  </action>
+  <action name="actionTest_Target_Setup">
+   <property name="text">
+    <string>Test Target Setup</string>
+   </property>
+  </action>
+  <action name="actionScreen_Capture">
+   <property name="text">
+    <string>Screen Capture</string>
+   </property>
+  </action>
+  <action name="actionDelete_Setup">
+   <property name="text">
+    <string>Delete Setup</string>
+   </property>
+  </action>
+  <action name="actionNone">
+   <property name="text">
+    <string>None</string>
+   </property>
+  </action>
+  <action name="actionCross">
+   <property name="text">
+    <string>Cross</string>
+   </property>
+  </action>
+  <action name="actionVertical">
+   <property name="text">
+    <string>Vertical</string>
+   </property>
+  </action>
+  <action name="actionHorizontal">
+   <property name="text">
+    <string>Horizontal</string>
+   </property>
+  </action>
+  <action name="actionStart">
+   <property name="text">
+    <string>Start</string>
+   </property>
+  </action>
+  <action name="actionStop">
+   <property name="text">
+    <string>Stop</string>
+   </property>
+  </action>
+  <action name="actionZoon_in">
+   <property name="text">
+    <string>Zoom in</string>
+   </property>
+  </action>
+  <action name="actionZoom_out">
+   <property name="text">
+    <string>Zoom out</string>
+   </property>
+  </action>
+  <action name="actionAcquisition">
+   <property name="text">
+    <string>Acquisition</string>
+   </property>
+  </action>
+  <action name="actionInterpolation">
+   <property name="text">
+    <string>Interpolation</string>
+   </property>
+  </action>
+  <action name="actionAuto_Setup">
+   <property name="text">
+    <string>Auto Setup</string>
+   </property>
+  </action>
+  <action name="actionOscilloscope_Vertical">
+   <property name="text">
+    <string>Oscilloscope Vertical</string>
+   </property>
+  </action>
+  <action name="actionOscilliscope_Horizontal">
+   <property name="text">
+    <string>Oscilliscope Horizontal</string>
+   </property>
+  </action>
+  <action name="actionFFT_Measurement">
+   <property name="text">
+    <string>FFT Measurement</string>
+   </property>
+  </action>
+  <action name="actionClear_Display">
+   <property name="text">
+    <string>Clear Display</string>
+   </property>
+  </action>
+  <action name="actionContents">
+   <property name="text">
+    <string>Contents</string>
+   </property>
+  </action>
+  <action name="actionUpdate">
+   <property name="text">
+    <string>Update</string>
+   </property>
+  </action>
+  <action name="actionHomepage">
+   <property name="text">
+    <string>Homepage</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
