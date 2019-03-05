@@ -18,6 +18,20 @@ fftsetup::fftsetup(QWidget *parent) :
     ui->nooffreqbinxcombobox->addItem("2048");
     ui->nooffreqbinxcombobox->addItem("4096");
 
+    ui->scalecombobox->addItem("SELECT");
+    ui->scalecombobox->addItem("Linear");
+    ui->scalecombobox->addItem("dB");
+
+    ui->verticaldivcombobox->addItem("SELECT");
+    ui->verticaldivcombobox->addItem("V");
+    ui->verticaldivcombobox->addItem("mV");
+
+    ui->horizontalcombobox->addItem("SELECT");
+    ui->horizontalcombobox->addItem("x1");
+    ui->horizontalcombobox->addItem("x2");
+    ui->horizontalcombobox->addItem("x4");
+    ui->horizontalcombobox->addItem("x8");
+    ui->horizontalcombobox->addItem("x16");
 
 }
 

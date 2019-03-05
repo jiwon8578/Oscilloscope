@@ -26,6 +26,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     loadSubWindow_setup(new OsciSetup(this));
     loadSubWindow_setup(new fftsetup(this));
+
     setWindowTitle("Oscilloscope");
     resize(1920, 1080);
 }
@@ -179,25 +180,24 @@ void MainWindow::createActions()
     connect(osSetup, &QAction::triggered, this, &MainWindow::osciSetupFunc);
     connect(transSetup, &QAction::triggered, this, &MainWindow::transducerSetup);
     connect(testTargetSetup, &QAction::triggered, this, &MainWindow::ttSetup);
+
 }
 
 
 void MainWindow::loadSubWindow_plot(QWidget *widget) //mdiArea에 sub window를 띄우는 함수 - plot용
 {
     auto window = ui->mdiArea->addSubWindow(widget);
-    window->resize(320,450);
+    window->resize(400,400);
     window->show();
 }
 
 void MainWindow::loadSubWindow_setup(QWidget *widget) //mdiArea에 sub window를 띄우는 함수 - setup용
 {
     auto window = ui->mdiArea->addSubWindow(widget);
-    window->resize(320,450);
+    window->resize(400,500);
     window->show();
     isOsciSetupOpen = true;
 }
-
-
 
 
 

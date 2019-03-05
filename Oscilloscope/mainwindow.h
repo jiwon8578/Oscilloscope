@@ -120,6 +120,8 @@ private:
     void loadSubWindow_plot(QWidget *widget);
     void loadSubWindow_setup(QWidget *widget);
 
+    void loadSubWindow_fftsetup(QWidget *widget);
+
 
 
 };
