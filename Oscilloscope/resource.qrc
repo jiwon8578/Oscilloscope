@@ -1,15 +1,2 @@
-<RCC>
-    <qresource prefix="/rec">
-        <file>icons/arrange.png</file>
-        <file>icons/auto.png</file>
-        <file>icons/capture.png</file>
-        <file>icons/cursor.png</file>
-        <file>icons/help.png</file>
-        <file>icons/minus.png</file>
-        <file>icons/opensetup.png</file>
-        <file>icons/plus.png</file>
-        <file>icons/print.png</file>
-        <file>icons/start.png</file>
-        <file>icons/stop.png</file>
-    </qresource>
-</RCC>
+<!DOCTYPE RCC>
+<RCC version="1.0"/>
