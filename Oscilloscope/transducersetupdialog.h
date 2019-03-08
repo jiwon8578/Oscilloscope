@@ -15,6 +15,9 @@ public:
     explicit TransducerSetupDialog(QWidget *parent = nullptr);
     ~TransducerSetupDialog();
 
+private slots:
+    void on_resetBtn_clicked();
+
 private:
     Ui::TransducerSetupDialog *ui;
 };

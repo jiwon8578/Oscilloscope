@@ -15,3 +15,10 @@ TestTargetSetupDialog::~TestTargetSetupDialog()
 {
     delete ui;
 }
+
+void TestTargetSetupDialog::on_resetBtn_clicked()
+{
+    foreach(QLineEdit *lineEdit, this->findChildren<QLineEdit*>()) {
+        lineEdit->clear();
+    }
+}

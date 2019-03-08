@@ -15,3 +15,12 @@ TransducerSetupDialog::~TransducerSetupDialog()
 {
     delete ui;
 }
+
+void TransducerSetupDialog::on_resetBtn_clicked()
+{
+    foreach(QLineEdit *lineEdit, this->findChildren<QLineEdit*>()) {
+        lineEdit->clear();
+    }
+}
+
+

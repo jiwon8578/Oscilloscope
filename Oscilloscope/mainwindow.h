@@ -46,6 +46,14 @@ private slots:
 
     void on_actionHorizontal_triggered();
 
+    void on_actionTransducer_Setup_triggered();
+
+    void on_actionTest_Target_Setup_triggered();
+
+    void on_actionScreen_Capture_triggered();
+
+    void on_actionDelete_Setup_triggered();
+
 private:
     Ui::MainWindow *ui;
 
@@ -58,6 +66,8 @@ private:
     fftPlot *fftPlotObj = new fftPlot;
     fftsetup *fftSetupObj = new fftsetup;
     QCursor *qcursor;
+
+    unsigned int imageCount = 1;
 };
 
 #endif // MAINWINDOW_H
