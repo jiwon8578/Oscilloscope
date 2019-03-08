@@ -100,3 +100,23 @@ void MainWindow::on_actionOscilloscope_Setup_triggered() //setup - oscilloscope 
         osSetupWin->show();
     }
 }
+
+void MainWindow::on_actionArrange_All_Window_triggered() //view - arrange all window
+{
+    osWaveformWin->move(0, 0);
+    if(osWaveformWin->isHidden()) {
+        osWaveformWin->show();
+    }
+    osSetupWin->move(400, 0);
+    if(osSetupWin->isHidden()) {
+        osSetupWin->show();
+    }
+    fftWaveformWin->move(800, 0);
+    if(fftWaveformWin->isHidden()) {
+        fftWaveformWin->show();
+    }
+    fftSetupWin->move(1200, 0);
+    if(fftSetupWin->isHidden()) {
+        fftSetupWin->show();
+    }
+}

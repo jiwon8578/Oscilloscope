@@ -33,6 +33,8 @@ private slots:
     void on_actionFFT_Waveform_Window_triggered();
     void on_actionFFT_Setup_Window_triggered();
 
+    void on_actionArrange_All_Window_triggered();
+
 private:
     Ui::MainWindow *ui;
 
