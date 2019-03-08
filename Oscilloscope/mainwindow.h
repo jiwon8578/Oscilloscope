@@ -7,6 +7,7 @@
 #include "fftplot.h"
 #include "freqplot.h"
 #include "oscisetup.h"
+#include <QCursor>
 
 namespace Ui {
 class MainWindow;
@@ -37,6 +38,14 @@ private slots:
 
     void on_actionFull_Screen_triggered();
 
+    void on_actionNone_triggered();
+
+    void on_actionCross_triggered();
+
+    void on_actionVertical_triggered();
+
+    void on_actionHorizontal_triggered();
+
 private:
     Ui::MainWindow *ui;
 
@@ -48,6 +57,7 @@ private:
     OsciSetup *osciSetupObj = new OsciSetup;
     fftPlot *fftPlotObj = new fftPlot;
     fftsetup *fftSetupObj = new fftsetup;
+    QCursor *qcursor;
 };
 
 #endif // MAINWINDOW_H

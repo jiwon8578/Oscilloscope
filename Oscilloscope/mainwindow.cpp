@@ -125,3 +125,24 @@ void MainWindow::on_actionFull_Screen_triggered() //view - full screen
 {
     this->showMaximized();
 }
+
+void MainWindow::on_actionNone_triggered()
+{
+    this->setCursor(QCursor(Qt::BlankCursor));
+}
+
+void MainWindow::on_actionCross_triggered()
+{
+   this->setCursor(QCursor(Qt::CrossCursor));
+}
+
+
+void MainWindow::on_actionVertical_triggered()
+{
+    this->setCursor(QCursor(Qt::SizeVerCursor));
+}
+
+void MainWindow::on_actionHorizontal_triggered()
+{
+    this->setCursor(QCursor(Qt::SizeHorCursor));
+}
