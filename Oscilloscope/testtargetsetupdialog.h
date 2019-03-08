@@ -15,6 +15,9 @@ public:
     explicit TestTargetSetupDialog(QWidget *parent = nullptr);
     ~TestTargetSetupDialog();
 
+private slots:
+    void on_resetBtn_clicked();
+
 private:
     Ui::TestTargetSetupDialog *ui;
 };

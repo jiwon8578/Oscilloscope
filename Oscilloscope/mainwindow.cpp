@@ -33,6 +33,8 @@ MainWindow::MainWindow(QWidget *parent) :
     fftSetupWin->resize(400, 400);
     fftSetupWin->show();
 
+    ui->menuFile->setStyleSheet("QMenu::selected{background-color:white;}");
+
     setWindowTitle("Oscilloscope");
     resize(1920, 1080);
 }
@@ -145,4 +147,29 @@ void MainWindow::on_actionVertical_triggered()
 void MainWindow::on_actionHorizontal_triggered()
 {
     this->setCursor(QCursor(Qt::SizeHorCursor));
+}
+
+void MainWindow::on_actionTransducer_Setup_triggered() //utility - transducer setup
+{
+    TransducerSetupDialog transducerSetup;
+    transducerSetup.exec();
+}
+
+
+void MainWindow::on_actionTest_Target_Setup_triggered() //utility - test target setup
+{
+    TestTargetSetupDialog testTargetSetup;
+    testTargetSetup.exec();
+}
+
+void MainWindow::on_actionScreen_Capture_triggered() //utility - screen capture
+{
+    QPixmap pic = this->grab();
+    //pic.save("" + QString::number(imageCount) + ".png"); //""안에 경로 입력
+    imageCount++;
+}
+
+void MainWindow::on_actionDelete_Setup_triggered()
+{
+
 }
