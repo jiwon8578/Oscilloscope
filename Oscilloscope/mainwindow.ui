@@ -26,7 +26,7 @@
      <x>0</x>
      <y>0</y>
      <width>536</width>
-     <height>26</height>
+     <height>17</height>
     </rect>
    </property>
    <property name="palette">
@@ -391,6 +391,7 @@ color:black;
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionOpen_File"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionLoad_Setup">
@@ -404,6 +405,10 @@ color:black;
    </property>
   </action>
   <action name="actionOpen_File">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/rec/icons/opensetup.png</normaloff>:/rec/icons/opensetup.png</iconset>
+   </property>
    <property name="text">
     <string>Open File</string>
    </property>
@@ -695,6 +700,8 @@ color:black;
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="resource.qrc"/>
+ </resources>
  <connections/>
 </ui>
