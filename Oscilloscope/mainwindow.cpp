@@ -16,6 +16,20 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     this->setStyleSheet("background-color: #454548;"); //background 색상 변경
     setCentralWidget(ui->mdiArea);
+    ui->menuBar->setStyleSheet("QMenuBar::item:selected{background-color:rgb(30,30,250)}"
+                               "QMenuBar{color:rgb(199,200,200)}"
+                               "QMenu{color:rgb(255,255,255)}");
+    ui->menuFile->setStyleSheet("QMenu::item:selected{background-color:rgb(30,30,250)}");
+    //ui->menuFile->setStyleSheet("QMenu::item:selected{background-color:rgb(30,30,250)}");
+    ui->menuView->setStyleSheet("QMenu::item:selected{background-color:rgb(30,30,250)}");
+    ui->menuSetup->setStyleSheet("QMenu::item:selected{background-color:rgb(30,30,250)}");
+    ui->menuUtility->setStyleSheet("QMenu::item:selected{background-color:rgb(30,30,250)}");
+    ui->menuCursor->setStyleSheet("QMenu::item:selected{background-color:rgb(30,30,250)}");
+    ui->menuAcquire->setStyleSheet("QMenu::item:selected{background-color:rgb(30,30,250)}");
+    ui->menuMeasure->setStyleSheet("QMenu::item:selected{background-color:rgb(30,30,250)}");
+    ui->menuHelp->setStyleSheet("QMenu::item:selected{background-color:rgb(30,30,250)}");
+
+
 
     osWaveformWin = ui->mdiArea->addSubWindow(freqPlotObj);
     osWaveformWin->resize(400, 400);
