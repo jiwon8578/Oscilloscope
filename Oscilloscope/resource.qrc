@@ -1,2 +1,15 @@
-<!DOCTYPE RCC>
-<RCC version="1.0"/>
+<RCC>
+    <qresource prefix="/rec">
+        <file>twotone_arrow_upward_black_18dp.png</file>
+        <file>twotone_cancel_black_18dp.png</file>
+        <file>twotone_folder_open_black_18dp.png</file>
+        <file>twotone_help_black_18dp.png</file>
+        <file>twotone_play_circle_filled_black_18dp.png</file>
+        <file>twotone_print_black_18dp.png</file>
+        <file>twotone_settings_overscan_black_18dp.png</file>
+        <file>twotone_stay_current_landscape_black_18dp.png</file>
+        <file>twotone_view_week_black_18dp.png</file>
+        <file>twotone_zoom_in_black_18dp.png</file>
+        <file>twotone_zoom_out_black_18dp.png</file>
+    </qresource>
+</RCC>
