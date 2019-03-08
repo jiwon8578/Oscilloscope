@@ -229,8 +229,11 @@
     </palette>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(235, 235, 235);
-background-color: rgb(49, 49, 49);
+    <string notr="true">QMenuBar {
+background-color:rgb(49,49,49);
+}
+color: rgb(235, 235, 235);
+
 </string>
    </property>
    <widget class="QMenu" name="menuFile">
