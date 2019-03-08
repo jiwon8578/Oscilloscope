@@ -86,15 +86,11 @@ void freqPlot::on_pushButton_clicked()
 }
 
 QMdiSubWindow *MainWindow::osWaveformWin;
-int MainWindow::osWaveformWinCount;
 
 void freqPlot::closeEvent(QCloseEvent *event)
 {
     MainWindow::osWaveformWin->hide();
-    MainWindow::osWaveformWinCount = 1;
     event->ignore();
-    MainWindow::osWaveformWinCount++;
-
 }
 //void freqPlot::plotMousePress(QMouseEvent *event)
 //{

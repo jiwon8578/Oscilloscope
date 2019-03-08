@@ -1,5 +1,7 @@
 #include "fftsetup.h"
 #include "ui_fftsetup.h"
+#include "mainwindow.h"
+#include <QMdiSubWindow>
 
 fftsetup::fftsetup(QWidget *parent) :
     QWidget(parent),
@@ -38,5 +40,13 @@ fftsetup::fftsetup(QWidget *parent) :
 fftsetup::~fftsetup()
 {
     delete ui;
+}
+
+QMdiSubWindow *MainWindow::fftSetupWin;
+
+void fftsetup::closeEvent(QCloseEvent *event)
+{
+    MainWindow::fftSetupWin->hide();
+    event->ignore();
 }
 

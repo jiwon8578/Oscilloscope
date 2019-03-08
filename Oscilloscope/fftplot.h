@@ -18,6 +18,7 @@ public:
 private:
     Ui::fftPlot *ui;
     void createfftPlot();
+    void closeEvent(QCloseEvent *event) override;
 };
 
 #endif // FFTPLOT_H

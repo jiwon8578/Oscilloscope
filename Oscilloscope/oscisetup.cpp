@@ -2,8 +2,9 @@
 #include "ui_oscisetup.h"
 #include "mainwindow.h"
 #include "freqplot.h"
-#include <QCloseEvent>
 #include <QMessageBox>
+#include <QMdiSubWindow>
+
 OsciSetup::OsciSetup(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::OsciSetup)
@@ -37,14 +38,13 @@ OsciSetup::~OsciSetup()
 //}
 
 
-bool MainWindow::isOsciSetupOpen;
+QMdiSubWindow *MainWindow::osSetupWin;
 
 void OsciSetup::closeEvent(QCloseEvent *event)
 {
-    MainWindow::isOsciSetupOpen = false;
-    event->accept();
+    MainWindow::osSetupWin->hide();
+    event->ignore();
 }
-
 
 void OsciSetup::on_setupButton_clicked()
 {

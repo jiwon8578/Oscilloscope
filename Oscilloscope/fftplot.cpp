@@ -1,5 +1,7 @@
 #include "fftplot.h"
 #include "ui_fftplot.h"
+#include "mainwindow.h"
+#include <QMdiSubWindow>
 
 fftPlot::fftPlot(QWidget *parent) :
     QWidget(parent),
@@ -33,6 +35,14 @@ void fftPlot::createfftPlot()
     ui->fftCustomPlot->xAxis->setRange(-1, 1);
     ui->fftCustomPlot->yAxis->setRange(0, 1);
     ui->fftCustomPlot->replot();
+}
+
+QMdiSubWindow *MainWindow::fftWaveformWin;
+
+void fftPlot::closeEvent(QCloseEvent *event)
+{
+    MainWindow::fftWaveformWin->hide();
+    event->ignore();
 }
 
 

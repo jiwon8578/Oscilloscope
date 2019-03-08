@@ -19,6 +19,7 @@ private slots:
 
 private:
     Ui::fftsetup *ui;
+    void closeEvent(QCloseEvent *event) override;
 };
 
 #endif // FFTSETUP_H
