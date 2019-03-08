@@ -35,6 +35,8 @@ private slots:
 
     void on_actionArrange_All_Window_triggered();
 
+    void on_actionFull_Screen_triggered();
+
 private:
     Ui::MainWindow *ui;
 

@@ -120,3 +120,8 @@ void MainWindow::on_actionArrange_All_Window_triggered() //view - arrange all wi
         fftSetupWin->show();
     }
 }
+
+void MainWindow::on_actionFull_Screen_triggered() //view - full screen
+{
+    this->showMaximized();
+}
