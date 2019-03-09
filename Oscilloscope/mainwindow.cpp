@@ -16,9 +16,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     this->setStyleSheet("background-color: #454548;"); //background 색상 변경
     setCentralWidget(ui->mdiArea);
-    ui->menuBar->setStyleSheet("QMenuBar::item:selected{background-color:rgb(30,30,250)}"
+    /*ui->menuBar->setStyleSheet("QMenuBar::item:selected{background-color:rgb(30,30,250)}"
                               "QMenuBar{color:rgb(199,200,200)}"
-                              "QMenu{color:rgb(255,255,255)}");
+                              "QMenu{color:rgb(255,255,255)}");*/
+    /*ui->menuBar->setStyleSheet("QMenuBar{background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,stop:0 lightgray, stop:1 darkgray)}"
+                               "QMenuBar::item {spacing: 2px; padding:5px 5px; background:transparent; border-radius:4px;}"
+                               "QMenuBar::item:selected {background:#a8a8a8}"
+                               "QMenuBar::item:pressed{background:#888888}");*/
     ui->menuFile->setStyleSheet("QMenu::item:selected{background-color:rgb(30,30,250)}");
     ui->menuView->setStyleSheet("QMenu::item:selected{background-color:rgb(30,30,250)}");
     ui->menuSetup->setStyleSheet("QMenu::item:selected{background-color:rgb(30,30,250)}");
