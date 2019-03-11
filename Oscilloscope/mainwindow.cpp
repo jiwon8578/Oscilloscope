@@ -166,6 +166,12 @@ void MainWindow::on_actionHorizontal_triggered()
     freqPlotObj->setCursor(sizeHor);
 }
 
+void MainWindow::on_actionArrow_triggered()
+{
+    QCursor arrow = QCursor(Qt::ArrowCursor);
+    freqPlotObj->setCursor(arrow);
+}
+
 void MainWindow::on_actionTransducer_Setup_triggered() //utility - transducer setup
 {
     TransducerSetupDialog transducerSetup;
@@ -190,3 +196,5 @@ void MainWindow::on_actionDelete_Setup_triggered()
 {
 
 }
+
+

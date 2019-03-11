@@ -286,6 +286,7 @@
     <addaction name="actionCross"/>
     <addaction name="actionVertical"/>
     <addaction name="actionHorizontal"/>
+    <addaction name="actionArrow"/>
    </widget>
    <widget class="QMenu" name="menuAcquire">
     <property name="title">
@@ -740,6 +741,11 @@
   <action name="actionPeak_Frequency">
    <property name="text">
     <string>Peak Frequency</string>
+   </property>
+  </action>
+  <action name="actionArrow">
+   <property name="text">
+    <string>Arrow</string>
    </property>
   </action>
  </widget>

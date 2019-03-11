@@ -54,6 +54,8 @@ private slots:
 
     void on_actionDelete_Setup_triggered();
 
+    void on_actionArrow_triggered();
+
 private:
     Ui::MainWindow *ui;
 
