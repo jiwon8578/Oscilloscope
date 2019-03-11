@@ -16,13 +16,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     this->setStyleSheet("background-color: #454548;"); //background 색상 변경
     setCentralWidget(ui->mdiArea);
-    /*ui->menuBar->setStyleSheet("QMenuBar::item:selected{background-color:rgb(30,30,250)}"
-                              "QMenuBar{color:rgb(199,200,200)}"
-                              "QMenu{color:rgb(255,255,255)}");*/
-    ui->menuBar->setStyleSheet("QMenuBar{background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,stop:0 lightgray, stop:1 darkgray)}"
+    ui->menuBar->setStyleSheet("QMenuBar{background-color: rgb(30,30,30)}"
                                "QMenuBar::item {margin-right: 3px; margin-left:3px; padding:5px 5px; background:transparent; border-radius:4px;}"
                                "QMenuBar::item:selected {background:#a8a8a8}"
-                               "QMenuBar::item:pressed{background:#888888}");
+                               "QMenuBar::item:pressed{background:#888888}" "QMenu{color:rgb(255,255,255)}" "QMenuBar{color:rgb(199,200,200)}");
     ui->menuFile->setStyleSheet("QMenu::item:selected{background-color:rgb(30,30,250)}");
     ui->menuView->setStyleSheet("QMenu::item:selected{background-color:rgb(30,30,250)}");
     ui->menuSetup->setStyleSheet("QMenu::item:selected{background-color:rgb(30,30,250)}");
@@ -48,6 +45,8 @@ MainWindow::MainWindow(QWidget *parent) :
     fftSetupWin = ui->mdiArea->addSubWindow(fftSetupObj);
     fftSetupWin->resize(400, 400);
     fftSetupWin->show();
+
+
 
     setWindowTitle("Oscilloscope");
     resize(1920, 1080);
@@ -144,23 +143,27 @@ void MainWindow::on_actionFull_Screen_triggered() //view - full screen
 
 void MainWindow::on_actionNone_triggered()
 {
-    this->setCursor(QCursor(Qt::BlankCursor));
+    QCursor none = QCursor(Qt::BlankCursor);
+    freqPlotObj->setCursor(none);
 }
 
 void MainWindow::on_actionCross_triggered()
 {
-   this->setCursor(QCursor(Qt::CrossCursor));
+   QCursor cross = QCursor(Qt::CrossCursor);
+   freqPlotObj->setCursor(cross);
 }
 
 
 void MainWindow::on_actionVertical_triggered()
 {
-    this->setCursor(QCursor(Qt::SizeVerCursor));
+    QCursor sizeVer= QCursor(Qt::SizeVerCursor);
+    freqPlotObj->setCursor(sizeVer);
 }
 
 void MainWindow::on_actionHorizontal_triggered()
 {
-    this->setCursor(QCursor(Qt::SizeHorCursor));
+    QCursor sizeHor = QCursor(Qt::SizeHorCursor);
+    freqPlotObj->setCursor(sizeHor);
 }
 
 void MainWindow::on_actionTransducer_Setup_triggered() //utility - transducer setup
