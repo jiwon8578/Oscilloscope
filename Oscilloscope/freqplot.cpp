@@ -21,8 +21,8 @@ freqPlot::freqPlot(QWidget *parent) :
     sender = new OsciSetup;
     //connect(sender,SIGNAL(timeEntered(double)),this,SLOT(on_pushButton_clicked()));
     ui->setupUi(this);
-//    connect(ui->freqfreqCustomPlot, SIGNAL(plottableClick(QCPAbstractPlottable*,int,QMouseEvent*)), this, SLOT(graphClicked(QCPAbstractPlottable*,int)));
-//    ui->freqfreqCustomPlot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom | QCP::iSelectAxes |
+//    connect(ui->freqCustomPlot, SIGNAL(plottableClick(QCPAbstractPlottable*,int,QMouseEvent*)), this, SLOT(graphClicked(QCPAbstractPlottable*,int)));
+//    ui->freqCustomPlot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom | QCP::iSelectAxes |
 //                                     QCP::iSelectLegend | QCP::iSelectPlottables);
 
 }
@@ -41,7 +41,7 @@ freqPlot::~freqPlot()
 
 void freqPlot::on_pushButton_clicked()
 {
-    QFile file("C:/Users/dmlru/OneDrive/project/Oscilloscope/open_fft.csv");
+    QFile file("C:/Users/dmlru/OneDrive/project/Oscilloscope/open_adc.csv");
         QVector<double> x;
         QVector<double> y;
 
@@ -77,50 +77,30 @@ void freqPlot::on_pushButton_clicked()
         ui->freqCustomPlot->replot();
 
 
-    //클럭을 통해 한 주기 알 수 있음
-//    double t=4.5; // 4.5DIV
-//    double Vmax = OsciSetup::volt ;
-//    double T=t*OsciSetup::time; // 4.5DIV*time/DIV = 주기
-//    double w = 2*(M_PI)*(1/T); //각 진동수 생성
-//    QVector<double> time(500), y(500);
-//    for (int i=0; i<line.size(); ++i)
-//    {
-//      time[i] = time_test.toDouble;
-//      y[i] = Vmax*sin(w*time[i]); // let's plot a quadratic function
-//    }
-//    // create graph and assign data to it:
-//    ui->freqfreqCustomPlot->addGraph();
-//    ui->freqfreqCustomPlot->graph(0)->setData(time_test.toDouble, adc_test.toDouble);
-//    // give the axes some labels:
-//    ui->freqfreqCustomPlot->xAxis->setLabel("Time");
-//    ui->freqfreqCustomPlot->yAxis->setLabel("Value");
-//    // set axes ranges, so we see all data:
-//    ui->freqfreqCustomPlot->xAxis->setRange(0, 10);
-//    ui->freqfreqCustomPlot->yAxis->setRange(-10, 10);
-//    // make grid
-//    QVector<double> x(501), y(501);
-//    for (int j=0; j<500; ++j)
-//    {
-//        x[j]= OsciSetup::time*j;
-//        y[j]= OsciSetup::volt*j;
-//    }
+    // make grid
+    QVector<double> time(501), volt(501);
+    for (int j=0; j<500; ++j)
+    {
+        time[j]= OsciSetup::time*j;
+        volt[j]= OsciSetup::volt*j;
+    }
 
-//    QCPBars *bars1 = new QCPBars(ui->freqfreqCustomPlot->xAxis, ui->freqfreqCustomPlot->yAxis);
-//    bars1->setWidth(9/(double)x.size());
-//    bars1->setData(x, y);
-//    bars1->setPen(Qt::NoPen);
-//    bars1->setBrush(QColor(10, 140, 70, 160));
-//    ui->freqfreqCustomPlot->xAxis->grid()->setPen(QPen(QColor(140, 140, 140), 1, Qt::DotLine));
-//    ui->freqfreqCustomPlot->yAxis->grid()->setPen(QPen(QColor(140, 140, 140), 1, Qt::DotLine));
-//    ui->freqfreqCustomPlot->xAxis->grid()->setSubGridPen(QPen(QColor(80, 80, 80), 1, Qt::DotLine));
-//    ui->freqfreqCustomPlot->yAxis->grid()->setSubGridPen(QPen(QColor(80, 80, 80), 1, Qt::DotLine));
-//    ui->freqfreqCustomPlot->xAxis->grid()->setSubGridVisible(true);
-//    ui->freqfreqCustomPlot->yAxis->grid()->setSubGridVisible(true);
-//    ui->freqfreqCustomPlot->replot();
+    QCPBars *bars1 = new QCPBars(ui->freqCustomPlot->xAxis, ui->freqCustomPlot->yAxis);
+    bars1->setWidth(9/(double)time.size());
+    bars1->setData(time, volt);
+    bars1->setPen(Qt::NoPen);
+    bars1->setBrush(QColor(10, 140, 70, 160));
+    ui->freqCustomPlot->xAxis->grid()->setPen(QPen(QColor(140, 140, 140), 1, Qt::DotLine));
+    ui->freqCustomPlot->yAxis->grid()->setPen(QPen(QColor(140, 140, 140), 1, Qt::DotLine));
+    ui->freqCustomPlot->xAxis->grid()->setSubGridPen(QPen(QColor(80, 80, 80), 1, Qt::DotLine));
+    ui->freqCustomPlot->yAxis->grid()->setSubGridPen(QPen(QColor(80, 80, 80), 1, Qt::DotLine));
+    ui->freqCustomPlot->xAxis->grid()->setSubGridVisible(true);
+    ui->freqCustomPlot->yAxis->grid()->setSubGridVisible(true);
+    ui->freqCustomPlot->replot();
 
-//    //time information
-//    ui->time->setText(OsciSetup::timelabel+OsciSetup::timeunitlabel);
-//    ui->volt->setText(OsciSetup::voltlabel+OsciSetup::voltunitlabel);
+    //time information
+    ui->time->setText(OsciSetup::timelabel+OsciSetup::timeunitlabel);
+    ui->volt->setText(OsciSetup::voltlabel+OsciSetup::voltunitlabel);
 }
 
 QMdiSubWindow *MainWindow::osWaveformWin;
