@@ -60,6 +60,8 @@ private slots:
 
     void on_actionExit_triggered();
 
+    void on_actionFFT_Analyzer_triggered();
+
 private:
     Ui::MainWindow *ui;
 

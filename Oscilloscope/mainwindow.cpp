@@ -193,15 +193,21 @@ void MainWindow::on_actionScreen_Capture_triggered() //utility - screen capture
     imageCount++;
 }
 
-void MainWindow::on_actionDelete_Setup_triggered()
+void MainWindow::on_actionDelete_Setup_triggered() //utility - delete setup
 {
     transducerSetup->on_resetBtn_clicked();
     testTargetSetup->on_resetBtn_clicked();
 }
 
 
-
 void MainWindow::on_actionExit_triggered()
 {
     QApplication::quit();
+}
+
+void MainWindow::on_actionFFT_Analyzer_triggered() //setup - fft setup
+{
+    if(fftSetupWin->isHidden()) {
+        fftSetupWin->show();
+    }
 }
