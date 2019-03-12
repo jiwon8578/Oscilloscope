@@ -200,3 +200,8 @@ void MainWindow::on_actionDelete_Setup_triggered()
 }
 
 
+
+void MainWindow::on_actionExit_triggered()
+{
+    QApplication::quit();
+}
