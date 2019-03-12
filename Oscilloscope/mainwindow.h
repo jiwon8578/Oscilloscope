@@ -8,6 +8,8 @@
 #include "freqplot.h"
 #include "oscisetup.h"
 #include <QCursor>
+#include "transducersetupdialog.h"
+#include "testtargetsetupdialog.h"
 
 namespace Ui {
 class MainWindow;
@@ -70,6 +72,9 @@ private:
     QCursor *qcursor;
 
     unsigned int imageCount = 1;
+
+    TransducerSetupDialog *transducerSetup;
+    TestTargetSetupDialog *testTargetSetup;
 };
 
 #endif // MAINWINDOW_H

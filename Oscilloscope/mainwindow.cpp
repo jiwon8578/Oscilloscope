@@ -174,15 +174,16 @@ void MainWindow::on_actionArrow_triggered()
 
 void MainWindow::on_actionTransducer_Setup_triggered() //utility - transducer setup
 {
-    TransducerSetupDialog transducerSetup;
-    transducerSetup.exec();
+
+    transducerSetup = new TransducerSetupDialog(this);
+    transducerSetup->show();
 }
 
 
 void MainWindow::on_actionTest_Target_Setup_triggered() //utility - test target setup
 {
-    TestTargetSetupDialog testTargetSetup;
-    testTargetSetup.exec();
+    testTargetSetup = new TestTargetSetupDialog(this);
+    testTargetSetup->show();
 }
 
 void MainWindow::on_actionScreen_Capture_triggered() //utility - screen capture
@@ -194,7 +195,8 @@ void MainWindow::on_actionScreen_Capture_triggered() //utility - screen capture
 
 void MainWindow::on_actionDelete_Setup_triggered()
 {
-
+    transducerSetup->on_resetBtn_clicked();
+    testTargetSetup->on_resetBtn_clicked();
 }
 
 
