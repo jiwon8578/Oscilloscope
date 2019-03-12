@@ -57,7 +57,7 @@ void freqPlot::on_pushButton_clicked()
              //qDebug() << line;
               QStringList fields = line.split(',');// split the string
 
-              x.append(fields.at(0).toDouble());
+              x.append(fields.at(0).toDouble()*(10^(-6)));
               y.append(fields.at(1).toDouble());
 
         }
@@ -70,33 +70,36 @@ void freqPlot::on_pushButton_clicked()
         ui->freqCustomPlot->yAxis->setLabel("volt");
 
         // set axes ranges, so we see all data:
-        ui->freqCustomPlot->xAxis->setRange(20, 30);
-        ui->freqCustomPlot->yAxis->setRange(-90, 90);
+        ui->freqCustomPlot->xAxis->setRange(x.front(), x.back());
+        ui->freqCustomPlot->yAxis->setRange(y.front(), y.back());
 
         // replot graph
         ui->freqCustomPlot->replot();
 
 
-    // make grid
-    QVector<double> time(501), volt(501);
-    for (int j=0; j<500; ++j)
-    {
-        time[j]= OsciSetup::time*j;
-        volt[j]= OsciSetup::volt*j;
-    }
+//    // make grid
+//    QVector<double> time(501), volt(501);
+//    for (int j=0; j<500; ++j)
+//    {
+//        time[j]= OsciSetup::time*j;
+//        volt[j]= OsciSetup::volt*j;
+//    }
 
-    QCPBars *bars1 = new QCPBars(ui->freqCustomPlot->xAxis, ui->freqCustomPlot->yAxis);
-    bars1->setWidth(9/(double)time.size());
-    bars1->setData(time, volt);
-    bars1->setPen(Qt::NoPen);
-    bars1->setBrush(QColor(10, 140, 70, 160));
-    ui->freqCustomPlot->xAxis->grid()->setPen(QPen(QColor(140, 140, 140), 1, Qt::DotLine));
-    ui->freqCustomPlot->yAxis->grid()->setPen(QPen(QColor(140, 140, 140), 1, Qt::DotLine));
-    ui->freqCustomPlot->xAxis->grid()->setSubGridPen(QPen(QColor(80, 80, 80), 1, Qt::DotLine));
-    ui->freqCustomPlot->yAxis->grid()->setSubGridPen(QPen(QColor(80, 80, 80), 1, Qt::DotLine));
-    ui->freqCustomPlot->xAxis->grid()->setSubGridVisible(true);
-    ui->freqCustomPlot->yAxis->grid()->setSubGridVisible(true);
-    ui->freqCustomPlot->replot();
+//    ui->freqCustomPlot->graph(1)->setData(time, volt);
+//    ui->freqCustomPlot->graph(1)->rescaleAxes();
+
+//    QCPBars *bars1 = new QCPBars(ui->freqCustomPlot->xAxis, ui->freqCustomPlot->yAxis);
+//    bars1->setWidth(9/(double)time.size());
+//    bars1->setData(time, volt);
+//    bars1->setPen(Qt::NoPen);
+//    bars1->setBrush(QColor(10, 140, 70, 160));
+//    ui->freqCustomPlot->xAxis->grid()->setPen(QPen(QColor(140, 140, 140), 1, Qt::DotLine));
+//    ui->freqCustomPlot->yAxis->grid()->setPen(QPen(QColor(140, 140, 140), 1, Qt::DotLine));
+//    ui->freqCustomPlot->xAxis->grid()->setSubGridPen(QPen(QColor(80, 80, 80), 1, Qt::DotLine));
+//    ui->freqCustomPlot->yAxis->grid()->setSubGridPen(QPen(QColor(80, 80, 80), 1, Qt::DotLine));
+//    ui->freqCustomPlot->xAxis->grid()->setSubGridVisible(true);
+//    ui->freqCustomPlot->yAxis->grid()->setSubGridVisible(true);
+//    ui->freqCustomPlot->replot();
 
     //time information
     ui->time->setText(OsciSetup::timelabel+OsciSetup::timeunitlabel);
