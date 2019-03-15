@@ -5,7 +5,8 @@
 #include "mainwindow.h"
 #include <QMdiSubWindow>
 #include <QFile>
-
+#include <algorithm>
+#include <vector>
 
 double OsciSetup::time;
 double OsciSetup::volt;
@@ -80,8 +81,10 @@ void freqPlot::on_pushButton_clicked()
         ui->freqCustomPlot->yAxis->setLabel("volt");
 
         // set axes ranges, so we see all data:
-        ui->freqCustomPlot->xAxis->setRange(x.front(), x.back());
-        ui->freqCustomPlot->yAxis->setRange(y.front(), y.back());
+        double min = *std::min_element(y.begin(), y.end()); //y값 최소
+        double max = *std::max_element(y.begin(), y.end()); //y값 최대
+        ui->freqCustomPlot->xAxis->setRange(x.front(), x.back()*1.2);
+        ui->freqCustomPlot->yAxis->setRange(min, max);
 
         // replot graph
         ui->freqCustomPlot->replot();
