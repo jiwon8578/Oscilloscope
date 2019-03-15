@@ -8,6 +8,7 @@
 #include "transducersetupdialog.h"
 #include "testtargetsetupdialog.h"
 #include "fftsetup.h"
+#include <QFileDialog>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -210,4 +211,18 @@ void MainWindow::on_actionFFT_Analyzer_triggered() //setup - fft setup
     if(fftSetupWin->isHidden()) {
         fftSetupWin->show();
     }
+}
+
+void MainWindow::on_actionOpen_File_triggered()
+{
+    QString filename = QFileDialog::getOpenFileName();
+
+    QFile file(filename);
+
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+        return;
+
+    QString content = file.readAll();
+
+    file.close();
 }

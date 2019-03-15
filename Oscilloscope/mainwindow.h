@@ -62,6 +62,8 @@ private slots:
 
     void on_actionFFT_Analyzer_triggered();
 
+    void on_actionOpen_File_triggered();
+
 private:
     Ui::MainWindow *ui;
 
