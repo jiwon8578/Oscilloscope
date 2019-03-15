@@ -64,14 +64,24 @@ void freqPlot::on_pushButton_clicked()
         // create graph and assign data to it:
         ui->freqCustomPlot->addGraph();
         ui->freqCustomPlot->graph(0)->setData(x, y);
+        // make X-axis unit
+        QSharedPointer<QCPAxisTickerFixed> fixedxTicker(new QCPAxisTickerFixed);
+        ui->freqCustomPlot->xAxis->setTicker(fixedxTicker);
+        fixedxTicker->setTickStep(OsciSetup::time);
+        fixedxTicker->setScaleStrategy(QCPAxisTickerFixed::ssNone);
+        // make Y-axis unit
+        QSharedPointer<QCPAxisTickerFixed> fixedyTicker(new QCPAxisTickerFixed);
+        ui->freqCustomPlot->yAxis->setTicker(fixedyTicker);
+        fixedyTicker->setTickStep(OsciSetup::volt);
+        fixedyTicker->setScaleStrategy(QCPAxisTickerFixed::ssNone);
 
         // give the axes some labels:
         ui->freqCustomPlot->xAxis->setLabel("time");
         ui->freqCustomPlot->yAxis->setLabel("volt");
 
         // set axes ranges, so we see all data:
-        ui->freqCustomPlot->xAxis->setRange(x.front(), x.back());
-        ui->freqCustomPlot->yAxis->setRange(y.front(), y.back());
+        ui->freqCustomPlot->xAxis->setRange(x.front()-1, x.back()+1);
+        ui->freqCustomPlot->yAxis->setRange(y.front()-10, y.back()+10);
 
         // replot graph
         ui->freqCustomPlot->replot();
