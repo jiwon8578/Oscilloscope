@@ -64,6 +64,11 @@ void freqPlot::on_pushButton_clicked()
               y.append(fields.at(1).toDouble()/OsciSetup::volt);
 
         }
+        // 축 원점 고정?
+//        int pxx = ui->freqCustomPlot->yAxis->coordToPixel(0);
+//        int pxy = ui->freqCustomPlot->xAxis->coordToPixel(0);
+//        ui->freqCustomPlot->xAxis->setOffset(ui->freqCustomPlot->axisRect()->height()-ui->freqCustomPlot->axisRect()->top()+pxx);
+//        ui->freqCustomPlot->yAxis->setOffset(ui->freqCustomPlot->axisRect()->left()-pxy);
         // create graph and assign data to it:
         ui->freqCustomPlot->addGraph();
         ui->freqCustomPlot->graph(0)->setData(x, y);
@@ -85,38 +90,14 @@ void freqPlot::on_pushButton_clicked()
         // set axes ranges, so we see all data:
         double min = *std::min_element(y.begin(), y.end()); //y값 최소
         double max = *std::max_element(y.begin(), y.end()); //y값 최대
-        ui->freqCustomPlot->xAxis->setRange(x.front(), x.back()*1.2);
+        ui->freqCustomPlot->xAxis->setRange(x.front(), x.back());
         ui->freqCustomPlot->yAxis->setRange(min, max);
 
         // replot graph
         ui->freqCustomPlot->replot();
 
 
-//    // make grid
-//    QVector<double> time(501), volt(501);
-//    for (int j=0; j<500; ++j)
-//    {
-//        time[j]= OsciSetup::time*j;
-//        volt[j]= OsciSetup::volt*j;
-//    }
-
-//    ui->freqCustomPlot->graph(1)->setData(time, volt);
-//    ui->freqCustomPlot->graph(1)->rescaleAxes();
-
-//    QCPBars *bars1 = new QCPBars(ui->freqCustomPlot->xAxis, ui->freqCustomPlot->yAxis);
-//    bars1->setWidth(9/(double)time.size());
-//    bars1->setData(time, volt);
-//    bars1->setPen(Qt::NoPen);
-//    bars1->setBrush(QColor(10, 140, 70, 160));
-//    ui->freqCustomPlot->xAxis->grid()->setPen(QPen(QColor(140, 140, 140), 1, Qt::DotLine));
-//    ui->freqCustomPlot->yAxis->grid()->setPen(QPen(QColor(140, 140, 140), 1, Qt::DotLine));
-//    ui->freqCustomPlot->xAxis->grid()->setSubGridPen(QPen(QColor(80, 80, 80), 1, Qt::DotLine));
-//    ui->freqCustomPlot->yAxis->grid()->setSubGridPen(QPen(QColor(80, 80, 80), 1, Qt::DotLine));
-//    ui->freqCustomPlot->xAxis->grid()->setSubGridVisible(true);
-//    ui->freqCustomPlot->yAxis->grid()->setSubGridVisible(true);
-//    ui->freqCustomPlot->replot();
-
-    //time information
+    //time, volt information
     ui->time->setText(OsciSetup::timelabel+OsciSetup::timeunitlabel);
     ui->volt->setText(OsciSetup::voltlabel+OsciSetup::voltunitlabel);
 }
@@ -128,6 +109,7 @@ void freqPlot::closeEvent(QCloseEvent *event)
     MainWindow::osWaveformWin->hide();
     event->ignore();
 }
+
 //void freqPlot::plotMousePress(QMouseEvent *event)
 //{
 //    QCPAbstractPlottable *plottable = plottableAt(event->pos());
