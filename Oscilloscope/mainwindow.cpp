@@ -9,6 +9,9 @@
 #include "testtargetsetupdialog.h"
 #include "fftsetup.h"
 #include <QFileDialog>
+#include <QDir>
+#include <QFileInfo>
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -213,16 +216,16 @@ void MainWindow::on_actionFFT_Analyzer_triggered() //setup - fft setup
     }
 }
 
-void MainWindow::on_actionOpen_File_triggered()
+void MainWindow::on_actionOpen_File_triggered() //File - Open file
 {
-    QString filename = QFileDialog::getOpenFileName();
-
+    QString filter = "All File (*.*) ;; Csv File (*.csv)";
+    filename = QFileDialog::getOpenFileName(this, "Open File", QDir::homePath(), filter);
     QFile file(filename);
 
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
         return;
 
-    QString content = file.readAll();
+    //QString content = file.readAll();
 
     file.close();
 }

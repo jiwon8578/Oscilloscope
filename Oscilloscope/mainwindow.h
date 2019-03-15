@@ -28,6 +28,7 @@ public:
     static QMdiSubWindow *osSetupWin;
     static QMdiSubWindow *fftWaveformWin;
     static QMdiSubWindow *fftSetupWin;
+    static QString filename;
 
 private slots:
     void on_actionOscilloscope_triggered();
@@ -80,7 +81,7 @@ private:
     unsigned int imageCount = 1;
 
     TransducerSetupDialog *transducerSetup;
-    TestTargetSetupDialog *testTargetSetup;
+    TestTargetSetupDialog *testTargetSetup;    
 };
 
 #endif // MAINWINDOW_H

@@ -40,9 +40,11 @@ freqPlot::~freqPlot()
 //  ui->statusBar->showMessage(message, 2500);
 //}
 
+QString MainWindow::filename;
+
 void freqPlot::on_pushButton_clicked()
 {
-    QFile file("C:/Users/dmlru/OneDrive/project/Oscilloscope/open_adc.csv");
+    QFile file(MainWindow::filename);
         QVector<double> x;
         QVector<double> y;
 
