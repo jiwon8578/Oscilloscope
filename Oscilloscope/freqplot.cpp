@@ -57,8 +57,8 @@ void freqPlot::on_pushButton_clicked()
              //qDebug() << line;
               QStringList fields = line.split(',');// split the string
 
-              x.append(fields.at(0).toDouble()*(10^(-6)));
-              y.append(fields.at(1).toDouble());
+              x.append(fields.at(0).toDouble()*(10^(-6))/OsciSetup::time);
+              y.append(fields.at(1).toDouble()/OsciSetup::volt);
 
         }
         // create graph and assign data to it:
@@ -80,8 +80,8 @@ void freqPlot::on_pushButton_clicked()
         ui->freqCustomPlot->yAxis->setLabel("volt");
 
         // set axes ranges, so we see all data:
-        ui->freqCustomPlot->xAxis->setRange(x.front()-1, x.back()+1);
-        ui->freqCustomPlot->yAxis->setRange(y.front()-10, y.back()+10);
+        ui->freqCustomPlot->xAxis->setRange(x.front(), x.back());
+        ui->freqCustomPlot->yAxis->setRange(y.front(), y.back());
 
         // replot graph
         ui->freqCustomPlot->replot();
