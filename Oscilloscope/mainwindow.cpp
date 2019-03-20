@@ -11,6 +11,9 @@
 #include <QFileDialog>
 #include <QDir>
 #include <QFileInfo>
+#include <QComboBox>
+#include <QFile>
+#include <QTextStream>
 #include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -226,6 +229,51 @@ void MainWindow::on_actionOpen_File_triggered() //File - Open file
         return;
 
     //QString content = file.readAll();
+
+    file.close();
+}
+
+void MainWindow::on_actionLoad_Setup_triggered() //File - Load Setup
+{
+    QString filter = "All File (*.*) ;; Csv File (*.csv)";
+    filename = QFileDialog::getOpenFileName(this, "Open File", QDir::homePath(), filter);
+    QFile file(filename);
+
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+        return;
+
+    QVector <double> data;
+    QTextStream in(&file);
+
+    while (!in.atEnd()) {
+         QString line = in.readLine();// read first line and so on
+         QStringList fields = line.split(',');// split the string
+         data.append(fields.at(0).toDouble());
+    }
+
+    QList<QLineEdit*> blanks_le = this->findChildren<QLineEdit*>();
+    QList<QComboBox*> blanks_cb = this->findChildren<QComboBox*>();
+
+    blanks_le[2]->setText(QString::number(data[0]));
+    blanks_cb[6]->setCurrentIndex(static_cast<int>(data[1])); //freq time unit
+    blanks_le[3]->setText(QString::number(data[2]));
+    blanks_cb[7]->setCurrentIndex(static_cast<int>(data[3])); //freq voltage unit
+    blanks_cb[0]->setCurrentIndex(static_cast<int>(data[4]));
+    blanks_cb[1]->setCurrentIndex(static_cast<int>(data[5]));
+    blanks_cb[2]->setCurrentIndex(static_cast<int>(data[6]));
+    blanks_cb[3]->setCurrentIndex(static_cast<int>(data[7]));
+    blanks_cb[4]->setCurrentIndex(static_cast<int>(data[8]));
+    blanks_cb[5]->setCurrentIndex(static_cast<int>(data[9]));
+    blanks_le[4]->setText(QString::number(data[10]));
+    blanks_cb[8]->setCurrentIndex(static_cast<int>(data[11]));
+    blanks_cb[9]->setCurrentIndex(static_cast<int>(data[12]));
+    blanks_le[5]->setText(QString::number(data[13]));
+    blanks_cb[10]->setCurrentIndex(static_cast<int>(data[14]));
+    blanks_cb[11]->setCurrentIndex(static_cast<int>(data[15])); //fft delay time
+    blanks_cb[12]->setCurrentIndex(static_cast<int>(data[16])); //fft vertical time
+
+    blanks_le[0]->setText(blanks_le[2]->text());
+    blanks_le[1]->setText(blanks_le[3]->text());
 
     file.close();
 }

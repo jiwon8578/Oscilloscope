@@ -65,6 +65,8 @@ private slots:
 
     void on_actionOpen_File_triggered();
 
+    void on_actionLoad_Setup_triggered();
+
 private:
     Ui::MainWindow *ui;
 
