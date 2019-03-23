@@ -38,19 +38,19 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     osWaveformWin = ui->mdiArea->addSubWindow(freqPlotObj);
-    osWaveformWin->resize(400, 400);
+    osWaveformWin->resize(1360, 440);
     osWaveformWin->show();
 
     osSetupWin = ui->mdiArea->addSubWindow(osciSetupObj);
-    osSetupWin->resize(400, 400);
+    osSetupWin->resize(500, 440);
     osSetupWin->show();
 
     fftWaveformWin = ui->mdiArea->addSubWindow(fftPlotObj);
-    fftWaveformWin->resize(400, 400);
+    fftWaveformWin->resize(1360, 440);
     fftWaveformWin->show();
 
     fftSetupWin = ui->mdiArea->addSubWindow(fftSetupObj);
-    fftSetupWin->resize(400, 400);
+    fftSetupWin->resize(500, 440);
     fftSetupWin->show();
 
 
@@ -277,3 +277,13 @@ void MainWindow::on_actionLoad_Setup_triggered() //File - Load Setup
 
     file.close();
 }
+
+void MainWindow::on_actionSave_File_triggered() //File - Save File
+{
+        QString filename = QFileDialog::getSaveFileName(this, tr("Save File"), QDir::currentPath(), tr("CSV (*.csv)"));
+        if(!filename.isNull() )
+            {
+              //qDebug(filename.toAscii());
+            }
+}
+
