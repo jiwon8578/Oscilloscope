@@ -17,10 +17,12 @@ public:
     explicit fftPlot(QWidget *parent = nullptr);
     ~fftPlot();
 
+private slots:
+    void on_start_clicked();
+
 private:
     Ui::fftPlot *ui;
     fftsetup *fftset;
-    void createfftPlot();
     void closeEvent(QCloseEvent *event) override;
 };
 

@@ -10,7 +10,6 @@ fftPlot::fftPlot(QWidget *parent) :
     ui(new Ui::fftPlot)
 {
     ui->setupUi(this);
-    createfftPlot();
     fftset = new fftsetup;
 }
 
@@ -19,7 +18,17 @@ fftPlot::~fftPlot()
     delete ui;
 }
 
-void fftPlot::createfftPlot()
+QMdiSubWindow *MainWindow::fftWaveformWin;
+
+void fftPlot::closeEvent(QCloseEvent *event)
+{
+    MainWindow::fftWaveformWin->hide();
+    event->ignore();
+}
+
+
+
+void fftPlot::on_start_clicked()
 {
     QFile file(MainWindow::filename);
         QVector<double> x;
@@ -68,15 +77,4 @@ void fftPlot::createfftPlot()
         // replot graph
         ui->fftCustomPlot->replot();
 
-
 }
-
-QMdiSubWindow *MainWindow::fftWaveformWin;
-
-void fftPlot::closeEvent(QCloseEvent *event)
-{
-    MainWindow::fftWaveformWin->hide();
-    event->ignore();
-}
-
-
