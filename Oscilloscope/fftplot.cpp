@@ -43,12 +43,23 @@ void fftPlot::on_start_clicked()
 
         while (!in.atEnd()) {
              QString line = in.readLine();// read first line and so on
-             //qDebug() << line;
-              QStringList fields = line.split(',');// split the string
+             QStringList fields = line.split(',');// split the string
+             double target =  *std::max_element(y.begin(), y.end());
 
-              x.append(fields.at(0).toDouble()*(10^(-6))/fftset->delaytimetext().toDouble());
-              y.append(fields.at(1).toDouble()/OsciSetup::volt);
+             //조건에 만족하는 행 고르기
+//             foreach(const QString& var, fields)
+//             {
+//                if (var.toDouble()==target)
+//                {
+//                    y.append(var);
+//                }
+//             }
 
+              // filter 이용해서 찾고자 하는 행 찾을 수 있음!
+
+              x.append(fields.at(0).toDouble()*(10^(-6)));
+              y.append(fields.at(1).toDouble());
+        //fftset->delaytimetext().toDouble() : fftsetup에서 지정한 변수 사용하고 싶을 때 요렇게!
         }
         // create graph and assign data to it:
         ui->fftCustomPlot->addGraph();
@@ -65,8 +76,8 @@ void fftPlot::on_start_clicked()
         fixedyTicker->setScaleStrategy(QCPAxisTickerFixed::ssNone);
 
         // give the axes some labels:
-        ui->fftCustomPlot->xAxis->setLabel("time");
-        ui->fftCustomPlot->yAxis->setLabel("volt");
+        //ui->fftCustomPlot->xAxis->setLabel();
+        //ui->fftCustomPlot->yAxis->setLabel();
 
         // set axes ranges, so we see all data:
         double min = *std::min_element(y.begin(), y.end()); //y값 최소
