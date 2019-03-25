@@ -42,6 +42,32 @@ fftsetup::~fftsetup()
     delete ui;
 }
 
+QString fftsetup::delaytimetext() const
+{
+    return ui->delaytimecombobox->currentText();
+}
+
+QString fftsetup::nooffreqxtext() const
+{
+    return ui->nooffreqbinxcombobox->currentText();
+}
+
+QString fftsetup::scaletext() const
+{
+    return  ui->scalecombobox->currentText();
+}
+
+QString fftsetup::verticaltext() const
+{
+    return ui->verticaldivcombobox->currentText();
+}
+
+QString fftsetup::horizontaltext() const
+{
+    return ui->horizontalcombobox->currentText();
+}
+
+
 QMdiSubWindow *MainWindow::fftSetupWin;
 
 void fftsetup::closeEvent(QCloseEvent *event)

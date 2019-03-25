@@ -15,6 +15,12 @@ public:
     explicit fftsetup(QWidget *parent = nullptr);
     ~fftsetup();
 
+    QString delaytimetext() const;
+    QString nooffreqxtext() const;
+    QString scaletext() const;
+    QString verticaltext() const;
+    QString horizontaltext() const;
+
 private slots:
 
 private:

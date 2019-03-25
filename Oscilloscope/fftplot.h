@@ -3,6 +3,8 @@
 
 #include <QWidget>
 
+class fftsetup;
+
 namespace Ui {
 class fftPlot;
 }
@@ -17,6 +19,7 @@ public:
 
 private:
     Ui::fftPlot *ui;
+    fftsetup *fftset;
     void createfftPlot();
     void closeEvent(QCloseEvent *event) override;
 };
