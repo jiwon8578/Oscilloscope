@@ -3,6 +3,7 @@
 #include "mainwindow.h"
 #include <QMdiSubWindow>
 #include <QMessageBox>
+#include "fftplot.h"
 
 fftsetup::fftsetup(QWidget *parent) :
     QWidget(parent),
@@ -80,46 +81,46 @@ void fftsetup::closeEvent(QCloseEvent *event)
 
 void fftsetup::on_pushButton_clicked()
 {
-    QString t = ui->delaytimelineedit->text();
-    QString v = ui->verticaldivlineedit->text();
-    QString unit_time = ui->delaytimecombobox->currentText();
-    QString unit_volt = ui->verticaldivcombobox->currentText();
-    timelabel = ui->delaytimelineedit->text();
-    voltlabel = ui->verticaldivlineedit->text();
-    timeunitlabel = ui->delaytimecombobox->currentText();
-    voltunitlabel = ui->verticaldivcombobox->currentText();
-    // switch문 써야되낭
-    if(unit_time=="s")
-    {
-        time = t.toDouble();
-    }
-    else if(unit_time=="ms")
-    {
-        time = t.toDouble()*(10^-2);}
-    else if(unit_time=="μs")
-    {
-        time = t.toDouble()*(10^-6);
-    }
-    else if(unit_time=="nm")
-    {
-        time = t.toDouble()*(10^-9);
-    }
-    else
-    {
-        QMessageBox::warning(this,"Select Unit","you must select time-unit");
-    }
+//    QString t = ui->delaytimelineedit->text();
+//    QString v = ui->verticaldivlineedit->text();
+//    QString unit_time = ui->delaytimecombobox->currentText();
+//    QString unit_volt = ui->verticaldivcombobox->currentText();
+//    timelabel_fft = ui->delaytimelineedit->text();
+//    voltlabel_fft = ui->verticaldivlineedit->text();
+//    timeunitlabel_fft = ui->delaytimecombobox->currentText();
+//    voltunitlabel_fft = ui->verticaldivcombobox->currentText();
+//    // switch문 써야되낭
+//    if(unit_time=="s")
+//    {
+//        time_fft = t.toDouble();
+//    }
+//    else if(unit_time=="ms")
+//    {
+//        time_fft = t.toDouble()*(10^-2);}
+//    else if(unit_time=="μs")
+//    {
+//        time_fft = t.toDouble()*(10^-6);
+//    }
+//    else if(unit_time=="nm")
+//    {
+//        time_fft = t.toDouble()*(10^-9);
+//    }
+//    else
+//    {
+//        QMessageBox::warning(this,"Select Unit","you must select time-unit");
+//    }
 
-    if(unit_volt=="v")
-    {
-        volt = v.toDouble();
-    }
-    else if(unit_volt=="mv")
-    {
-        volt = v.toDouble()*(10^-2);
-    }
-    else
-    {
-        QMessageBox::warning(this,"Select Unit","you must select volt-unit");
-    }
+//    if(unit_volt=="v")
+//    {
+//        volt_fft = v.toDouble();
+//    }
+//    else if(unit_volt=="mv")
+//    {
+//        volt_fft = v.toDouble()*(10^-2);
+//    }
+//    else
+//    {
+//        QMessageBox::warning(this,"Select Unit","you must select volt-unit");
+//    }
 
 }

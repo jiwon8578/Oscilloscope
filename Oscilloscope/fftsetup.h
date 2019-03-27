@@ -2,6 +2,11 @@
 #define FFTSETUP_H
 
 #include <QWidget>
+#include <QString>
+#include <QLineEdit>
+#include <QCloseEvent>
+
+class fftplot;
 
 namespace Ui {
 class fftsetup;
@@ -20,12 +25,13 @@ public:
     QString scaletext() const;
     QString verticaltext() const;
     QString horizontaltext() const;
-    static double time;
-    static double volt;
-    static QString timelabel;
-    static QString voltlabel;
-    static QString timeunitlabel;
-    static QString voltunitlabel;
+
+//    static double time_fft;
+//    static double volt_fft;
+//    static QString timelabel_fft;
+//    static QString voltlabel_fft;
+//    static QString timeunitlabel_fft;
+//    static QString voltunitlabel_fft;
 
 private slots:
 
