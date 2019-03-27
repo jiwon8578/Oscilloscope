@@ -2,6 +2,7 @@
 #include "ui_fftsetup.h"
 #include "mainwindow.h"
 #include <QMdiSubWindow>
+#include <QMessageBox>
 
 fftsetup::fftsetup(QWidget *parent) :
     QWidget(parent),
@@ -76,3 +77,49 @@ void fftsetup::closeEvent(QCloseEvent *event)
     event->ignore();
 }
 
+
+void fftsetup::on_pushButton_clicked()
+{
+    QString t = ui->delaytimelineedit->text();
+    QString v = ui->verticaldivlineedit->text();
+    QString unit_time = ui->delaytimecombobox->currentText();
+    QString unit_volt = ui->verticaldivcombobox->currentText();
+    timelabel = ui->delaytimelineedit->text();
+    voltlabel = ui->verticaldivlineedit->text();
+    timeunitlabel = ui->delaytimecombobox->currentText();
+    voltunitlabel = ui->verticaldivcombobox->currentText();
+    // switch문 써야되낭
+    if(unit_time=="s")
+    {
+        time = t.toDouble();
+    }
+    else if(unit_time=="ms")
+    {
+        time = t.toDouble()*(10^-2);}
+    else if(unit_time=="μs")
+    {
+        time = t.toDouble()*(10^-6);
+    }
+    else if(unit_time=="nm")
+    {
+        time = t.toDouble()*(10^-9);
+    }
+    else
+    {
+        QMessageBox::warning(this,"Select Unit","you must select time-unit");
+    }
+
+    if(unit_volt=="v")
+    {
+        volt = v.toDouble();
+    }
+    else if(unit_volt=="mv")
+    {
+        volt = v.toDouble()*(10^-2);
+    }
+    else
+    {
+        QMessageBox::warning(this,"Select Unit","you must select volt-unit");
+    }
+
+}

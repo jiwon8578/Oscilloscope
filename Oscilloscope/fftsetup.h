@@ -20,8 +20,16 @@ public:
     QString scaletext() const;
     QString verticaltext() const;
     QString horizontaltext() const;
+    static double time;
+    static double volt;
+    static QString timelabel;
+    static QString voltlabel;
+    static QString timeunitlabel;
+    static QString voltunitlabel;
 
 private slots:
+
+    void on_pushButton_clicked();
 
 private:
     Ui::fftsetup *ui;
