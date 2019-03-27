@@ -5,6 +5,13 @@
 #include <QMessageBox>
 #include "fftplot.h"
 
+double fftsetup::time_fft;
+double fftsetup::volt_fft;
+QString fftsetup::timelabel_fft;
+QString fftsetup::timeunitlabel_fft;
+QString fftsetup::voltlabel_fft;
+QString fftsetup::voltunitlabel_fft;
+
 fftsetup::fftsetup(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::fftsetup)
@@ -81,46 +88,43 @@ void fftsetup::closeEvent(QCloseEvent *event)
 
 void fftsetup::on_pushButton_clicked()
 {
-//    QString t = ui->delaytimelineedit->text();
-//    QString v = ui->verticaldivlineedit->text();
-//    QString unit_time = ui->delaytimecombobox->currentText();
-//    QString unit_volt = ui->verticaldivcombobox->currentText();
-//    timelabel_fft = ui->delaytimelineedit->text();
-//    voltlabel_fft = ui->verticaldivlineedit->text();
-//    timeunitlabel_fft = ui->delaytimecombobox->currentText();
-//    voltunitlabel_fft = ui->verticaldivcombobox->currentText();
-//    // switch문 써야되낭
-//    if(unit_time=="s")
-//    {
-//        time_fft = t.toDouble();
-//    }
-//    else if(unit_time=="ms")
-//    {
-//        time_fft = t.toDouble()*(10^-2);}
-//    else if(unit_time=="μs")
-//    {
-//        time_fft = t.toDouble()*(10^-6);
-//    }
-//    else if(unit_time=="nm")
-//    {
-//        time_fft = t.toDouble()*(10^-9);
-//    }
-//    else
-//    {
-//        QMessageBox::warning(this,"Select Unit","you must select time-unit");
-//    }
+    QString t = ui->delaytimelineedit->text();
+    QString v = ui->verticaldivlineedit->text();
+    QString unit_time = ui->delaytimecombobox->currentText();
+    QString unit_volt = ui->verticaldivcombobox->currentText();
+    timelabel_fft = ui->delaytimelineedit->text();
+    voltlabel_fft = ui->verticaldivlineedit->text();
+    timeunitlabel_fft = ui->delaytimecombobox->currentText();
+    voltunitlabel_fft = ui->verticaldivcombobox->currentText();
+    // switch문 써야되낭
+    if(unit_time=="ms")
+    {
+        time_fft = t.toDouble()*(10^-2);
+    }
+    else if(unit_time=="us")
+    {
+        time_fft = t.toDouble()*(10^-6);
+    }
+    else if(unit_time=="ns")
+    {
+        time_fft = t.toDouble()*(10^-9);
+    }
+    else
+    {
+        QMessageBox::warning(this,"Select Unit","you must select time-unit");
+    }
 
-//    if(unit_volt=="v")
-//    {
-//        volt_fft = v.toDouble();
-//    }
-//    else if(unit_volt=="mv")
-//    {
-//        volt_fft = v.toDouble()*(10^-2);
-//    }
-//    else
-//    {
-//        QMessageBox::warning(this,"Select Unit","you must select volt-unit");
-//    }
+    if(unit_volt=="V")
+    {
+        volt_fft = v.toDouble();
+    }
+    else if(unit_volt=="mV")
+    {
+        volt_fft = v.toDouble()*(10^-2);
+    }
+    else
+    {
+        QMessageBox::warning(this,"Select Unit","you must select volt-unit");
+    }
 
 }

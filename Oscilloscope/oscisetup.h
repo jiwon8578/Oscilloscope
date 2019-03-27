@@ -31,15 +31,23 @@ signals:
 //public slots:
 //    void textChanged(QString);
 private slots:
-    void on_setupButton_clicked();
+    //void on_setupButton_clicked();
 //    QString timeunitpush() const;
 
     void on_triggerToZeroBtn_clicked();
+    void save_time();
+    void save_voltage();
+    void save_time_unit();
+    void save_voltage_unit();
 
 private:
     Ui::OsciSetup *ui;
     freqPlot *test;
     void closeEvent(QCloseEvent *event) override;
+    QString save_time_var;
+    QString save_voltage_var;
+    QString unit_time;
+    QString unit_volt;
 
 };
 

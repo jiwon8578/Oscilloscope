@@ -26,12 +26,12 @@ public:
     QString verticaltext() const;
     QString horizontaltext() const;
 
-//    static double time_fft;
-//    static double volt_fft;
-//    static QString timelabel_fft;
-//    static QString voltlabel_fft;
-//    static QString timeunitlabel_fft;
-//    static QString voltunitlabel_fft;
+    static double time_fft;
+    static double volt_fft;
+    static QString timelabel_fft;
+    static QString voltlabel_fft;
+    static QString timeunitlabel_fft;
+    static QString voltunitlabel_fft;
 
 private slots:
 
