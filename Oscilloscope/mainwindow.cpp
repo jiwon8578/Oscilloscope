@@ -23,7 +23,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     this->setStyleSheet("background-color: #454548;"); //background 색상 변경
     setCentralWidget(ui->mdiArea);
-    ui->menuBar->setStyleSheet("QMenuBar{background-color: rgb(30,30,30)}"
+    ui->menuBar->setStyleSheet("QMenuBar{background-color: rgb(105, 105, 105)}"
                                "QMenuBar::item {margin-right: 3px; margin-left:3px; padding:5px 5px; background:transparent; border-radius:4px;}"
                                "QMenuBar::item:selected {background:#a8a8a8}"
                                "QMenuBar::item:pressed{background:#888888}" "QMenu{color:rgb(255,255,255)}" "QMenuBar{color:rgb(199,200,200)}");
