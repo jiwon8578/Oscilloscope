@@ -35,11 +35,19 @@ public:
 
 private slots:
 
-    void on_pushButton_clicked();
+    //void on_pushButton_clicked();
+    void save_time();
+    void save_voltage();
+    void save_time_unit();
+    void save_voltage_unit();
 
 private:
     Ui::fftsetup *ui;
     void closeEvent(QCloseEvent *event) override;
+    QString save_time_var;
+    QString save_voltage_var;
+    QString unit_time;
+    QString unit_volt;
 };
 
 #endif // FFTSETUP_H

@@ -52,13 +52,6 @@
        </spacer>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton">
-        <property name="text">
-         <string>Ok</string>
-        </property>
-       </widget>
-      </item>
-      <item>
        <widget class="QPushButton" name="resettodefaultpushbutton">
         <property name="text">
          <string>Reset to default</string>

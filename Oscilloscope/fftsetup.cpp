@@ -8,8 +8,8 @@
 double fftsetup::time_fft;
 double fftsetup::volt_fft;
 QString fftsetup::timelabel_fft;
-QString fftsetup::timeunitlabel_fft;
 QString fftsetup::voltlabel_fft;
+QString fftsetup::timeunitlabel_fft;
 QString fftsetup::voltunitlabel_fft;
 
 fftsetup::fftsetup(QWidget *parent) :
@@ -43,6 +43,16 @@ fftsetup::fftsetup(QWidget *parent) :
     ui->horizontalcombobox->addItem("x4");
     ui->horizontalcombobox->addItem("x8");
     ui->horizontalcombobox->addItem("x16");
+
+    connect(ui->delaytimelineedit, SIGNAL(textChanged(const QString&)), this, SLOT(save_time()));
+    connect(ui->verticaldivlineedit, SIGNAL(textChanged(const QString&)), this, SLOT(save_voltage()));
+    connect(ui->delaytimecombobox, SIGNAL(currentIndexChanged(const QString&)), this, SLOT(save_time_unit()));
+    connect(ui->verticaldivcombobox, SIGNAL(currentIndexChanged(const QString&)), this, SLOT(save_voltage_unit()));
+
+    timelabel_fft = save_time_var;
+    voltlabel_fft = save_voltage_var;
+    timeunitlabel_fft = unit_time;
+    voltunitlabel_fft = unit_volt;
 
 }
 
@@ -85,46 +95,51 @@ void fftsetup::closeEvent(QCloseEvent *event)
     event->ignore();
 }
 
-
-void fftsetup::on_pushButton_clicked()
+void fftsetup::save_time()
 {
-    QString t = ui->delaytimelineedit->text();
-    QString v = ui->verticaldivlineedit->text();
-    QString unit_time = ui->delaytimecombobox->currentText();
-    QString unit_volt = ui->verticaldivcombobox->currentText();
-    timelabel_fft = ui->delaytimelineedit->text();
-    voltlabel_fft = ui->verticaldivlineedit->text();
-    timeunitlabel_fft = ui->delaytimecombobox->currentText();
-    voltunitlabel_fft = ui->verticaldivcombobox->currentText();
-    // switch문 써야되낭
+        save_time_var = ui->delaytimelineedit->text();
+}
+
+void fftsetup::save_voltage()
+{
+        save_voltage_var = ui->verticaldivlineedit->text();
+}
+
+void fftsetup::save_time_unit()
+{
+    unit_time = ui->delaytimecombobox->currentText();
+
     if(unit_time=="ms")
     {
-        time_fft = t.toDouble()*(10^-2);
-    }
+        time_fft = save_time_var.toDouble()*(10^-2);}
     else if(unit_time=="us")
     {
-        time_fft = t.toDouble()*(10^-6);
+        time_fft = save_time_var.toDouble()*(10^-6);
     }
     else if(unit_time=="ns")
     {
-        time_fft = t.toDouble()*(10^-9);
+        time_fft = save_time_var.toDouble()*(10^-9);
     }
     else
     {
         QMessageBox::warning(this,"Select Unit","you must select time-unit");
     }
+}
+
+void fftsetup::save_voltage_unit()
+{
+    unit_volt = ui->verticaldivcombobox->currentText();
 
     if(unit_volt=="V")
     {
-        volt_fft = v.toDouble();
+        volt_fft = save_voltage_var.toDouble();
     }
     else if(unit_volt=="mV")
     {
-        volt_fft = v.toDouble()*(10^-2);
+        volt_fft = save_voltage_var.toDouble()*(10^-2);
     }
     else
     {
         QMessageBox::warning(this,"Select Unit","you must select volt-unit");
     }
-
 }

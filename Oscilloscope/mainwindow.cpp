@@ -295,6 +295,8 @@ void MainWindow::on_actionLoad_Setup_triggered() //File - Load Setup
 
 void MainWindow::on_actionSave_Setup_triggered()    //File - Save Setup
 {
+    QList<QLineEdit*> blanks_le = this->findChildren<QLineEdit*>();
+    QList<QComboBox*> blanks_cb = this->findChildren<QComboBox*>();
 
 }
 
