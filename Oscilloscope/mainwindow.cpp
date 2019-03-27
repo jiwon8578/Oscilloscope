@@ -233,6 +233,21 @@ void MainWindow::on_actionOpen_File_triggered() //File - Open file
     file.close();
 }
 
+void MainWindow::on_actionSave_File_triggered() //File - Save File
+{
+    QString filter = "All File (*.*) ;; Csv File (*.csv)";
+    filename = QFileDialog::getSaveFileName(this, "Save File", QDir::homePath(), filter);
+    QFile file(filename);
+
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
+        return;
+
+    //QString content = file.readAll();
+
+    file.close();
+}
+
+
 void MainWindow::on_actionLoad_Setup_triggered() //File - Load Setup
 {
     QString filter = "All File (*.*) ;; Csv File (*.csv)";
@@ -278,12 +293,8 @@ void MainWindow::on_actionLoad_Setup_triggered() //File - Load Setup
     file.close();
 }
 
-void MainWindow::on_actionSave_File_triggered() //File - Save File
+void MainWindow::on_actionSave_Setup_triggered()    //File - Save Setup
 {
-        QString filename = QFileDialog::getSaveFileName(this, tr("Save File"), QDir::currentPath(), tr("CSV (*.csv)"));
-        if(!filename.isNull() )
-            {
-              //qDebug(filename.toAscii());
-            }
+
 }
 
