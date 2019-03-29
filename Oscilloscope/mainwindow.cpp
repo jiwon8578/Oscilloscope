@@ -23,7 +23,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     this->setStyleSheet("background-color: #454548;"); //background 색상 변경
     setCentralWidget(ui->mdiArea);
-    ui->menuBar->setStyleSheet("QMenuBar{background-color: rgb(30,30,30)}"
+    ui->menuBar->setStyleSheet("QMenuBar{background-color: rgb(105, 105, 105)}"
                                "QMenuBar::item {margin-right: 3px; margin-left:3px; padding:5px 5px; background:transparent; border-radius:4px;}"
                                "QMenuBar::item:selected {background:#a8a8a8}"
                                "QMenuBar::item:pressed{background:#888888}" "QMenu{color:rgb(255,255,255)}" "QMenuBar{color:rgb(199,200,200)}");
@@ -251,52 +251,183 @@ void MainWindow::on_actionSave_File_triggered() //File - Save File
 void MainWindow::on_actionLoad_Setup_triggered() //File - Load Setup
 {
     QString filter = "All File (*.*) ;; Csv File (*.csv)";
-    filename = QFileDialog::getOpenFileName(this, "Open File", QDir::homePath(), filter);
-    QFile file(filename);
+        filename = QFileDialog::getOpenFileName(this, "Open File", QDir::homePath(), filter);
+        QFile file(filename);
 
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
-        return;
+        if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+            return;
 
-    QVector <double> data;
-    QTextStream in(&file);
+        QVector <QString> data;
+        QTextStream in(&file);
 
-    while (!in.atEnd()) {
-         QString line = in.readLine();// read first line and so on
-         QStringList fields = line.split(',');// split the string
-         data.append(fields.at(0).toDouble());
-    }
+        while (!in.atEnd()) {
+             QString line = in.readLine();// read first line and so on
+             QStringList fields = line.split(',');// split the string
+             data.append(fields.at(0));
+        }
 
-    QList<QLineEdit*> blanks_le = this->findChildren<QLineEdit*>();
-    QList<QComboBox*> blanks_cb = this->findChildren<QComboBox*>();
+        QList<QLineEdit*> blanks_le = this->findChildren<QLineEdit*>();
+        QList<QComboBox*> blanks_cb = this->findChildren<QComboBox*>();
 
-    blanks_le[2]->setText(QString::number(data[0]));
-    blanks_cb[6]->setCurrentIndex(static_cast<int>(data[1])); //freq time unit
-    blanks_le[3]->setText(QString::number(data[2]));
-    blanks_cb[7]->setCurrentIndex(static_cast<int>(data[3])); //freq voltage unit
-    blanks_cb[0]->setCurrentIndex(static_cast<int>(data[4]));
-    blanks_cb[1]->setCurrentIndex(static_cast<int>(data[5]));
-    blanks_cb[2]->setCurrentIndex(static_cast<int>(data[6]));
-    blanks_cb[3]->setCurrentIndex(static_cast<int>(data[7]));
-    blanks_cb[4]->setCurrentIndex(static_cast<int>(data[8]));
-    blanks_cb[5]->setCurrentIndex(static_cast<int>(data[9]));
-    blanks_le[4]->setText(QString::number(data[10]));
-    blanks_cb[8]->setCurrentIndex(static_cast<int>(data[11]));
-    blanks_cb[9]->setCurrentIndex(static_cast<int>(data[12]));
-    blanks_le[5]->setText(QString::number(data[13]));
-    blanks_cb[10]->setCurrentIndex(static_cast<int>(data[14]));
-    blanks_cb[11]->setCurrentIndex(static_cast<int>(data[15])); //fft delay time
-    blanks_cb[12]->setCurrentIndex(static_cast<int>(data[16])); //fft vertical time
+        int index = 0;
+        blanks_le[2]->setText(data[0]);
 
-    blanks_le[0]->setText(blanks_le[2]->text());
-    blanks_le[1]->setText(blanks_le[3]->text());
+        if(data[1] == "s") {
+            index = 1;
+        } else if(data[1] == "ms") {
+            index = 2;
+        } else if(data[1] == "μs") {
+            index = 3;
+        } else {
+            index = 4;
+        }
+        blanks_cb[6]->setCurrentIndex(index); //freq time unit
 
-    file.close();
+        blanks_le[3]->setText(data[2]);
+
+        if(data[3] == "v") {
+            index = 1;
+        } else {
+            index = 2;
+        }
+        blanks_cb[7]->setCurrentIndex(index); //freq voltage unit
+
+        if(data[4] == "AC") {
+            index = 1;
+        } else if(data[4] == "DC"){
+            index = 2;
+        } else {
+            index = 3;
+        }
+        blanks_cb[0]->setCurrentIndex(index);
+
+        if(data[5] == "x1") {
+            index = 1;
+        } else if(data[5] == "x10"){
+            index = 2;
+        } else if(data[5] == "x100"){
+            index = 3;
+        } else {
+            index = 4;
+        }
+        blanks_cb[1]->setCurrentIndex(index);
+
+        if(data[6] == "None") {
+            index = 1;
+        } else if(data[6] == "Lower"){
+            index = 2;
+        } else {
+            index = 3;
+        }
+        blanks_cb[2]->setCurrentIndex(index);
+
+        if(data[7] == "Edge") {
+            index  = 1;
+        } else {
+            index = 2;
+        }
+        blanks_cb[3]->setCurrentIndex(index);
+
+        if(data[8] == "Auto") {
+            index = 1;
+        } else if(data[8] == "Normal"){
+            index = 2;
+        } else {
+            index = 3;
+        }
+        blanks_cb[4]->setCurrentIndex(index);
+
+        if(data[9] == "+") {
+            index  = 1;
+        } else {
+            index = 2;
+        }
+        blanks_cb[5]->setCurrentIndex(index);
+
+        //여기서부터 fftsetup
+        blanks_le[4]->setText(data[10]);
+
+        if(data[11] == "256") {
+            index = 1;
+        } else if(data[11] == "512") {
+            index = 2;
+        } else if(data[11] == "1024") {
+            index = 3;
+        } else if(data[11] == "2048") {
+            index = 4;
+        } else {
+            index = 5;
+        }
+        blanks_cb[8]->setCurrentIndex(index);
+
+        if(data[12] == "Linear") {
+            index = 1;
+        } else {
+            index = 2;
+        }
+        blanks_cb[9]->setCurrentIndex(index);
+
+        blanks_le[5]->setText(data[13]);
+
+        if(data[14] == "x1") {
+            index = 1;
+        } else if(data[14] == "x2"){
+            index = 2;
+        } else if(data[14] == "x4") {
+            index = 3;
+        } else if(data[14] == "x8") {
+            index = 4;
+        } else {
+            index = 5;
+        }
+        blanks_cb[10]->setCurrentIndex(index);
+
+        if(data[15] == "ms") {
+            index = 1;
+        } else if(data[15] == "us") {
+            index = 2;
+        } else {
+            index = 3;
+        }
+        blanks_cb[11]->setCurrentIndex(index); //fft delay time
+
+        if(data[16] == "V") {
+            index = 1;
+        } else {
+            index = 2;
+        }
+        blanks_cb[12]->setCurrentIndex(index); //fft vertical time
+
+        blanks_le[0]->setText(blanks_le[2]->text());
+        blanks_le[1]->setText(blanks_le[3]->text());
+
+
+        file.close();
+
 }
 
 void MainWindow::on_actionSave_Setup_triggered()    //File - Save Setup
 {
-    QList<QLineEdit*> blanks_le = this->findChildren<QLineEdit*>();
-    QList<QComboBox*> blanks_cb = this->findChildren<QComboBox*>();
+    QList<QString> *save_data_list = new QList<QString>();
+       QList<QString> *fft_save_data_list = new QList<QString>();
+
+       *save_data_list = osciSetupObj->setup_save_data();
+       *fft_save_data_list = fftSetupObj->fftsetup_save_data();
+
+        QString filter = "Csv File (*.csv)";
+        QString filename_save = QFileDialog::getSaveFileName(this, "Save File", QDir::currentPath(), filter);
+        QFile file(filename_save);
+        if(file.open(QFile::WriteOnly|QFile::Truncate)) {
+            QTextStream output(&file);
+            for(int i = 0; i < save_data_list->size(); i++) {
+                output << save_data_list->at(i) << "\n";
+            }
+            for(int j = 0; j < fft_save_data_list->size(); j++) {
+                output << fft_save_data_list->at(j) << "\n";
+            }
+        }
+        file.close();
+
 
 }
 

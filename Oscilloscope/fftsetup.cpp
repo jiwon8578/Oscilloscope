@@ -48,6 +48,9 @@ fftsetup::fftsetup(QWidget *parent) :
     connect(ui->verticaldivlineedit, SIGNAL(textChanged(const QString&)), this, SLOT(save_voltage()));
     connect(ui->delaytimecombobox, SIGNAL(currentIndexChanged(const QString&)), this, SLOT(save_time_unit()));
     connect(ui->verticaldivcombobox, SIGNAL(currentIndexChanged(const QString&)), this, SLOT(save_voltage_unit()));
+    connect(ui->nooffreqbinxcombobox, SIGNAL(currentIndexChanged(const QString&)), this, SLOT(save_freqBins()));
+    connect(ui->scalecombobox, SIGNAL(currentIndexChanged(const QString&)), this, SLOT(save_scale()));
+    connect(ui->horizontalcombobox, SIGNAL(currentIndexChanged(const QString&)), this, SLOT(save_horizontal()));
 
     timelabel_fft = save_time_var;
     voltlabel_fft = save_voltage_var;
@@ -142,4 +145,30 @@ void fftsetup::save_voltage_unit()
     {
         QMessageBox::warning(this,"Select Unit","you must select volt-unit");
     }
+}
+
+void fftsetup::save_freqBins() {
+    freqBins = ui->nooffreqbinxcombobox->currentText();
+}
+
+void fftsetup::save_scale() {
+    scale = ui->scalecombobox->currentText();
+}
+
+void fftsetup::save_horizontal() {
+    horizontal = ui->horizontalcombobox->currentText();
+}
+
+QList<QString> fftsetup::fftsetup_save_data() {
+    QList<QString> *fft_save_data_list = new QList<QString>();
+
+    fft_save_data_list->append(save_time_var);
+    fft_save_data_list->append(freqBins);
+    fft_save_data_list->append(scale);
+    fft_save_data_list->append(save_voltage_var);
+    fft_save_data_list->append(horizontal);
+    fft_save_data_list->append(unit_time);
+    fft_save_data_list->append(unit_volt);
+
+    return *fft_save_data_list;
 }

@@ -33,6 +33,8 @@ public:
     static QString timeunitlabel_fft;
     static QString voltunitlabel_fft;
 
+    QList<QString> fftsetup_save_data();
+
 private slots:
 
     //void on_pushButton_clicked();
@@ -40,6 +42,9 @@ private slots:
     void save_voltage();
     void save_time_unit();
     void save_voltage_unit();
+    void save_freqBins();
+    void save_scale();
+    void save_horizontal();
 
 private:
     Ui::fftsetup *ui;
@@ -48,6 +53,9 @@ private:
     QString save_voltage_var;
     QString unit_time;
     QString unit_volt;
+    QString freqBins;
+    QString scale;
+    QString horizontal;
 };
 
 #endif // FFTSETUP_H
