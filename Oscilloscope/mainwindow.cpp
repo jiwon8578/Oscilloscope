@@ -270,6 +270,7 @@ void MainWindow::on_actionLoad_Setup_triggered() //File - Load Setup
         QList<QComboBox*> blanks_cb = this->findChildren<QComboBox*>();
 
         int index = 0;
+        //여기서부터 oscisetup
         blanks_le[2]->setText(data[0]);
 
         if(data[1] == "s") {
@@ -345,7 +346,7 @@ void MainWindow::on_actionLoad_Setup_triggered() //File - Load Setup
         blanks_cb[5]->setCurrentIndex(index);
 
         //여기서부터 fftsetup
-        blanks_le[4]->setText(data[10]);
+        blanks_le[6]->setText(data[10]);
 
         if(data[11] == "256") {
             index = 1;
@@ -367,7 +368,7 @@ void MainWindow::on_actionLoad_Setup_triggered() //File - Load Setup
         }
         blanks_cb[9]->setCurrentIndex(index);
 
-        blanks_le[5]->setText(data[13]);
+        blanks_le[7]->setText(data[13]);
 
         if(data[14] == "x1") {
             index = 1;
@@ -400,6 +401,9 @@ void MainWindow::on_actionLoad_Setup_triggered() //File - Load Setup
 
         blanks_le[0]->setText(blanks_le[2]->text());
         blanks_le[1]->setText(blanks_le[3]->text());
+
+        blanks_le[4]->setText(blanks_le[6]->text());
+        blanks_le[5]->setText(blanks_le[7]->text());
 
 
         file.close();
