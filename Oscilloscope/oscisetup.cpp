@@ -107,8 +107,14 @@ void OsciSetup::closeEvent(QCloseEvent *event)
 
 void OsciSetup::on_triggerToZeroBtn_clicked()
 {
-    ui->timeEdit->setText("");
-    ui->voltageEdit->setText("");
+    ui->timeEdit->setText("0");
+    ui->voltageEdit->setText("0");
+    ui->couplingComboBox->setCurrentIndex(0);
+    ui->probeComboBox->setCurrentIndex(0);
+    ui->filterComboBox->setCurrentIndex(0);
+    ui->triggerModeComboBox->setCurrentIndex(0);
+    ui->triggerSweepComboBox->setCurrentIndex(0);
+    ui->triggerSlopeComboBox->setCurrentIndex(0);
 }
 
 void OsciSetup::save_time() {
@@ -202,4 +208,18 @@ QList<QString> OsciSetup::setup_save_data() {
     save_data_list->append(triggerSlope);
 
     return *save_data_list;
+}
+
+void OsciSetup::on_ResetToDefBtn_clicked()
+{
+    ui->timeEdit->setText("400");
+    ui->timeComboBox->setCurrentIndex(3);
+    ui->voltageEdit->setText("500");
+    ui->voltageComboBox->setCurrentIndex(2);
+    ui->couplingComboBox->setCurrentIndex(1);
+    ui->probeComboBox->setCurrentIndex(1);
+    ui->filterComboBox->setCurrentIndex(1);
+    ui->triggerModeComboBox->setCurrentIndex(1);
+    ui->triggerSweepComboBox->setCurrentIndex(1);
+    ui->triggerSlopeComboBox->setCurrentIndex(2);
 }
