@@ -137,10 +137,11 @@ void OsciSetup::save_time_unit() {
     {
         time = save_time_var.toDouble()*(10^-9);
     }
-    else
+    /*else
     {
         QMessageBox::warning(this,"Select Unit","you must select time-unit");
     }
+    */
 }
 
 void OsciSetup::save_voltage_unit() {
@@ -154,10 +155,11 @@ void OsciSetup::save_voltage_unit() {
     {
         volt = save_voltage_var.toDouble()*(10^-2);
     }
-    else
+   /* else
     {
         QMessageBox::warning(this,"Select Unit","you must select volt-unit");
     }
+    */
 
 }
 

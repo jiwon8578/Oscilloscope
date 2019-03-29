@@ -3,6 +3,8 @@
 
 #include <QWidget>
 #include "oscisetup.h"
+#include <QObject>
+#include <qcustomplot.h>
 
 class OsciSetup;
 
@@ -20,13 +22,13 @@ public:
 
 
 private slots:
-    //void freqPlot::graphClicked(QCPAbstractPlottable *plottable, int dataIndex);
     void on_pushButton_clicked();
+    void plotMousePress(QMouseEvent *event);
 
 private:
     Ui::freqPlot *ui;
     OsciSetup *sender;
-    void plotMousePress(QMouseEvent *event);
+    QCPItemText *textItem;
     void closeEvent(QCloseEvent *event) override;
 };
 

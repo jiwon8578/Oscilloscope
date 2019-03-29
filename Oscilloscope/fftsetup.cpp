@@ -123,10 +123,10 @@ void fftsetup::save_time_unit()
     {
         time_fft = save_time_var.toDouble()*(10^-9);
     }
-    else
+    /*else
     {
         QMessageBox::warning(this,"Select Unit","you must select time-unit");
-    }
+    }*/
 }
 
 void fftsetup::save_voltage_unit()
@@ -141,10 +141,10 @@ void fftsetup::save_voltage_unit()
     {
         volt_fft = save_voltage_var.toDouble()*(10^-2);
     }
-    else
+    /*else
     {
         QMessageBox::warning(this,"Select Unit","you must select volt-unit");
-    }
+    }*/
 }
 
 void fftsetup::save_freqBins() {

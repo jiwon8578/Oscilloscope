@@ -3,6 +3,7 @@
 #include "qmath.h"
 #include "oscisetup.h"
 #include "mainwindow.h"
+
 #include <QMdiSubWindow>
 #include <QFile>
 #include <algorithm>
@@ -20,11 +21,11 @@ freqPlot::freqPlot(QWidget *parent) :
     ui(new Ui::freqPlot)
 {
     sender = new OsciSetup;
-    //connect(sender,SIGNAL(timeEntered(double)),this,SLOT(on_pushButton_clicked()));
     ui->setupUi(this);
-//    connect(ui->freqCustomPlot, SIGNAL(plottableClick(QCPAbstractPlottable*,int,QMouseEvent*)), this, SLOT(graphClicked(QCPAbstractPlottable*,int)));
-//    ui->freqCustomPlot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom | QCP::iSelectAxes |
-//                                     QCP::iSelectLegend | QCP::iSelectPlottables);
+    textItem = new QCPItemText(ui->freqCustomPlot);
+    connect(ui->freqCustomPlot, SIGNAL(mousePress(QMouseEvent*)), this, SLOT(plotMousePress(QMouseEvent*)));
+    ui->freqCustomPlot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom | QCP::iSelectAxes |
+                                     QCP::iSelectLegend | QCP::iSelectPlottables);
 
 }
 
@@ -97,6 +98,8 @@ void freqPlot::on_pushButton_clicked()
         ui->freqCustomPlot->replot();
 
 
+
+
     //time, volt information
     ui->time->setText(OsciSetup::timelabel+OsciSetup::timeunitlabel);
     ui->volt->setText(OsciSetup::voltlabel+OsciSetup::voltunitlabel);
@@ -110,24 +113,16 @@ void freqPlot::closeEvent(QCloseEvent *event)
     event->ignore();
 }
 
-//void freqPlot::plotMousePress(QMouseEvent *event)
-//{
-//    QCPAbstractPlottable *plottable = plottableAt(event->pos());
+void freqPlot::plotMousePress(QMouseEvent *event)
+{
 
-//        // 2. If it is a scatter graph, then I want to determine the data
-//        // point under the cursor position.
-//        QCPGraph *graph(dynamic_cast<QCPGraph*>(plottable));
-//        if (graph != nullptr) {
-//            int x = ui->freqCustomPlot->xAxis->pixelToCoord(event->pos().x());
-//            auto beginRange = graph->data()->findBegin(x);
-//            QToolTip::showText(event->globalPos(),
-//                  tr("<table>"
-//                       "<tr>"
-//                       "<td>%L1:</td>" "<td>%L2</td>"
-//                       "</tr>"
-//                     "</table>").arg("Index").arg(beginRange->key),
-//                   this, rect());
-//        } else {
-//            QToolTip::hideText();
-//        }
-//}
+            double xCoord = ui->freqCustomPlot->xAxis->pixelToCoord(event->localPos().x());
+            double yCoord = ui->freqCustomPlot->yAxis->pixelToCoord(event->localPos().y());
+
+            textItem->setText(QString("(%1, %2)").arg(xCoord).arg(yCoord));
+            textItem->position->setCoords(QPointF(xCoord, yCoord));
+            textItem->setFont(QFont(font().family(), 13));
+            textItem->setPen(QPen(Qt::black));
+            //textItem->setBrush(Qt::red);
+            ui->freqCustomPlot->replot();
+}
