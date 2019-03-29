@@ -48,6 +48,8 @@ private slots:
     void save_triggerSweep();
     void save_triggerSlope();
 
+    void on_ResetToDefBtn_clicked();
+
 private:
     Ui::OsciSetup *ui;
     freqPlot *test;
