@@ -30,6 +30,8 @@ OsciSetup::OsciSetup(QWidget *parent) :
 
     connect(ui->timeEdit, SIGNAL(textChanged(const QString&)), this, SLOT(save_time()));
     connect(ui->voltageEdit, SIGNAL(textChanged(const QString&)), this, SLOT(save_voltage()));
+    connect(ui->timeEdit, SIGNAL(textChanged(const QString&)), this, SLOT(save_time_unit()));
+    connect(ui->voltageEdit, SIGNAL(textChanged(const QString&)), this, SLOT(save_voltage_unit()));
     connect(ui->timeComboBox, SIGNAL(currentIndexChanged(const QString&)), this, SLOT(save_time_unit()));
     connect(ui->voltageComboBox, SIGNAL(currentIndexChanged(const QString&)), this, SLOT(save_voltage_unit()));
     connect(ui->couplingComboBox, SIGNAL(currentIndexChanged(const QString&)), this, SLOT(save_coupling()));
