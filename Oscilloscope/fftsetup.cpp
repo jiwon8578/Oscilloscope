@@ -17,6 +17,10 @@ fftsetup::fftsetup(QWidget *parent) :
     ui(new Ui::fftsetup)
 {
     ui->setupUi(this);
+    setWindowTitle("FFT Setup");
+    ui->fftSetupLabel->setStyleSheet("font-weight:bold");
+    ui->fftSetupLabel->setAlignment(Qt::AlignCenter);
+
     ui->delaytimecombobox->addItem("SELECT");
     ui->delaytimecombobox->addItem("ms");
     ui->delaytimecombobox->addItem("us");

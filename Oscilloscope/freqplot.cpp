@@ -23,6 +23,7 @@ freqPlot::freqPlot(QWidget *parent) :
 {
     sender = new OsciSetup;
     ui->setupUi(this);
+    setWindowTitle("Oscilloscope");
     textItem = new QCPItemText(ui->freqCustomPlot);
 
     connect(ui->freqCustomPlot, SIGNAL(mousePress(QMouseEvent*)), this, SLOT(getX(QMouseEvent *)));

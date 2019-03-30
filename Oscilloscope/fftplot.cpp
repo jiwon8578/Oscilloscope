@@ -10,10 +10,11 @@ fftPlot::fftPlot(QWidget *parent) :
     ui(new Ui::fftPlot)
 {
     ui->setupUi(this);
+    setWindowTitle("FFT");
+
     fftset = new fftsetup;
 
-    ui->fftCustomPlot->setBackground(QBrush(QColor("#2d2d2d")));
-
+    ui->fftCustomPlot->setBackground(QBrush(QColor("#2d2d2d")));  
 }
 
 fftPlot::~fftPlot()

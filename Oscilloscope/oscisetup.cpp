@@ -11,6 +11,7 @@ OsciSetup::OsciSetup(QWidget *parent) :
     ui(new Ui::OsciSetup)
 {
     ui->setupUi(this);
+    setWindowTitle("Oscilloscope Setup");
     ui->osciSetupLabel->setStyleSheet("font-weight:bold");
     ui->osciSetupLabel->setAlignment(Qt::AlignCenter);
     ui->timeComboBox->addItem("SELECT");
