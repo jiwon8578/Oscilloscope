@@ -81,8 +81,6 @@ OsciSetup::OsciSetup(QWidget *parent) :
     ui->triggerSlopeComboBox->addItem("SELECT");
     ui->triggerSlopeComboBox->addItem("+");
     ui->triggerSlopeComboBox->addItem("-");
-
-
 }
 
 OsciSetup::~OsciSetup()
@@ -96,7 +94,6 @@ OsciSetup::~OsciSetup()
 //    return ui->timeComboBox->currentText();
 
 //}
-
 
 QMdiSubWindow *MainWindow::osSetupWin;
 

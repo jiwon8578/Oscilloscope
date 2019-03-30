@@ -60,8 +60,6 @@ fftsetup::fftsetup(QWidget *parent) :
     voltlabel_fft = save_voltage_var;
     timeunitlabel_fft = unit_time;
     voltunitlabel_fft = unit_volt;
-
-
 }
 
 fftsetup::~fftsetup()
@@ -187,5 +185,4 @@ void fftsetup::on_resettodefaultpushbutton_clicked()
     ui->verticaldivlineedit->setText("500");
     ui->verticaldivcombobox->setCurrentIndex(2);
     ui->horizontalcombobox->setCurrentIndex(1);
-
 }

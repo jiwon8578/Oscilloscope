@@ -2,7 +2,6 @@
 #include "ui_fftplot.h"
 #include "mainwindow.h"
 #include <QMdiSubWindow>
-
 #include "fftsetup.h"
 
 fftPlot::fftPlot(QWidget *parent) :
@@ -29,8 +28,6 @@ void fftPlot::closeEvent(QCloseEvent *event)
     MainWindow::fftWaveformWin->hide();
     event->ignore();
 }
-
-
 
 void fftPlot::on_start_clicked()
 {

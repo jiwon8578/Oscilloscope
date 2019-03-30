@@ -3,7 +3,6 @@
 #include "qmath.h"
 #include "oscisetup.h"
 #include "mainwindow.h"
-
 #include <QMdiSubWindow>
 #include <QFile>
 #include <algorithm>
@@ -44,7 +43,6 @@ freqPlot::freqPlot(QWidget *parent) :
 
     //Background-Color
     ui->freqCustomPlot->setBackground(QBrush(QColor("#2d2d2d")));
-
 }
 
 freqPlot::~freqPlot()
@@ -83,8 +81,7 @@ void freqPlot::on_pushButton_clicked()
 
               x.append(fields.at(0).toDouble()*(10^(-6))/OsciSetup::time);
               y.append(fields.at(1).toDouble()/OsciSetup::volt);
-
-        }
+}
         // 축 원점 고정?
 //        int pxx = ui->freqCustomPlot->yAxis->coordToPixel(0);
 //        int pxy = ui->freqCustomPlot->xAxis->coordToPixel(0);
@@ -119,12 +116,9 @@ void freqPlot::on_pushButton_clicked()
         // replot graph
         ui->freqCustomPlot->replot();
 
-
-
-
-    //time, volt information
-    ui->time->setText(OsciSetup::timelabel+OsciSetup::timeunitlabel);
-    ui->volt->setText(OsciSetup::voltlabel+OsciSetup::voltunitlabel);
+        //time, volt information
+        ui->time->setText(OsciSetup::timelabel+OsciSetup::timeunitlabel);
+         ui->volt->setText(OsciSetup::voltlabel+OsciSetup::voltunitlabel);
 }
 
 QMdiSubWindow *MainWindow::osWaveformWin;
@@ -146,7 +140,7 @@ void freqPlot::plotMousePress(QMouseEvent *event)
      textItem->setFont(QFont(font().family(), 8));
      textItem->setPen(QPen(Qt::white));
      textItem->setBrush(QBrush(Qt::white));
-            //textItem->setBrush(Qt::red);
+     //textItem->setBrush(Qt::red);
      ui->freqCustomPlot->replot();
 }
 

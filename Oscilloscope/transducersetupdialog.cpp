@@ -22,5 +22,3 @@ void TransducerSetupDialog::on_resetBtn_clicked()
         lineEdit->clear();
     }
 }
-
-

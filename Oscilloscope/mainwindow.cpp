@@ -184,7 +184,6 @@ void MainWindow::on_actionArrow_triggered()
 
 void MainWindow::on_actionTransducer_Setup_triggered() //utility - transducer setup
 {
-
     transducerSetup = new TransducerSetupDialog(this);
     transducerSetup->show();
 }
@@ -408,9 +407,7 @@ void MainWindow::on_actionLoad_Setup_triggered() //File - Load Setup
         blanks_le[4]->setText(blanks_le[6]->text());
         blanks_le[5]->setText(blanks_le[7]->text());
 
-
         file.close();
-
 }
 
 void MainWindow::on_actionSave_Setup_triggered()    //File - Save Setup
