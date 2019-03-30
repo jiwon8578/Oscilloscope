@@ -63,7 +63,7 @@ OsciSetup::OsciSetup(QWidget *parent) :
     ui->filterComboBox->addItem("SELECT");
     ui->filterComboBox->addItem("None");
     ui->filterComboBox->addItem("Lower");
-    ui->filterComboBox->addItem("Higer");
+    ui->filterComboBox->addItem("Higher");
 
     //trigger mode combobox안에 item추가
     ui->triggerModeComboBox->addItem("SELECT");

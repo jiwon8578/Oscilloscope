@@ -132,15 +132,15 @@ void MainWindow::on_actionArrange_All_Window_triggered() //view - arrange all wi
     if(osWaveformWin->isHidden()) {
         osWaveformWin->show();
     }
-    osSetupWin->move(400, 0);
+    osSetupWin->move(1360, 0);
     if(osSetupWin->isHidden()) {
         osSetupWin->show();
     }
-    fftWaveformWin->move(800, 0);
+    fftWaveformWin->move(0, 440);
     if(fftWaveformWin->isHidden()) {
         fftWaveformWin->show();
     }
-    fftSetupWin->move(1200, 0);
+    fftSetupWin->move(1360, 440);
     if(fftSetupWin->isHidden()) {
         fftSetupWin->show();
     }
