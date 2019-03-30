@@ -57,6 +57,7 @@ fftsetup::fftsetup(QWidget *parent) :
     timeunitlabel_fft = unit_time;
     voltunitlabel_fft = unit_volt;
 
+
 }
 
 fftsetup::~fftsetup()

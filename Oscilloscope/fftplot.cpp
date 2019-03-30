@@ -11,6 +11,9 @@ fftPlot::fftPlot(QWidget *parent) :
 {
     ui->setupUi(this);
     fftset = new fftsetup;
+
+    ui->fftCustomPlot->setBackground(QBrush(QColor("#2d2d2d")));
+
 }
 
 fftPlot::~fftPlot()
@@ -64,6 +67,8 @@ void fftPlot::on_start_clicked()
         // create graph and assign data to it:
         ui->fftCustomPlot->addGraph();
         ui->fftCustomPlot->graph(0)->setData(x, y);
+        ui->fftCustomPlot->graph()->setPen(QPen(Qt::green));
+
         // make X-axis unit
         QSharedPointer<QCPAxisTickerFixed> fixedxTicker(new QCPAxisTickerFixed);
         ui->fftCustomPlot->xAxis->setTicker(fixedxTicker);

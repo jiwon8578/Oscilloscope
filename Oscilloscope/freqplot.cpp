@@ -41,9 +41,8 @@ freqPlot::freqPlot(QWidget *parent) :
     item2->setVisible(false);
     item2->setPen(QPen(Qt::gray, 1.0, Qt::DashLine));
 
+    //Background-Color
     ui->freqCustomPlot->setBackground(QBrush(QColor("#2d2d2d")));
-
-
 
 }
 
@@ -141,8 +140,9 @@ void freqPlot::plotMousePress(QMouseEvent *event)
 
      textItem->setText(QString("(%1, %2)").arg(xCoord).arg(yCoord));
      textItem->position->setCoords(QPointF(xCoord, yCoord));
-     textItem->setFont(QFont(font().family(), 13));
+     textItem->setFont(QFont(font().family(), 8));
      textItem->setPen(QPen(Qt::white));
+     textItem->setBrush(QBrush(Qt::white));
             //textItem->setBrush(Qt::red);
      ui->freqCustomPlot->replot();
 }
