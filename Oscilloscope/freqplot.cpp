@@ -32,6 +32,7 @@ freqPlot::freqPlot(QWidget *parent) :
     ui->freqCustomPlot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom | QCP::iSelectAxes |
                                      QCP::iSelectLegend | QCP::iSelectPlottables);
 
+
     item = new QCPItemLine(ui->freqCustomPlot);
     item->setVisible(false);
     item->setPen(QPen(Qt::gray, 1.0, Qt::DashLine));
@@ -39,6 +40,10 @@ freqPlot::freqPlot(QWidget *parent) :
     item2 = new QCPItemLine(ui->freqCustomPlot);
     item2->setVisible(false);
     item2->setPen(QPen(Qt::gray, 1.0, Qt::DashLine));
+
+    ui->freqCustomPlot->setBackground(QBrush(QColor("#2d2d2d")));
+
+
 
 }
 
@@ -86,6 +91,8 @@ void freqPlot::on_pushButton_clicked()
         // create graph and assign data to it:
         ui->freqCustomPlot->addGraph();
         ui->freqCustomPlot->graph(0)->setData(x, y);
+        ui->freqCustomPlot->graph()->setPen(QPen(Qt::green));
+
         // make X-axis unit
         QSharedPointer<QCPAxisTickerFixed> fixedxTicker(new QCPAxisTickerFixed);
         ui->freqCustomPlot->xAxis->setTicker(fixedxTicker);
@@ -135,7 +142,7 @@ void freqPlot::plotMousePress(QMouseEvent *event)
      textItem->setText(QString("(%1, %2)").arg(xCoord).arg(yCoord));
      textItem->position->setCoords(QPointF(xCoord, yCoord));
      textItem->setFont(QFont(font().family(), 13));
-     textItem->setPen(QPen(Qt::black));
+     textItem->setPen(QPen(Qt::white));
             //textItem->setBrush(Qt::red);
      ui->freqCustomPlot->replot();
 }
