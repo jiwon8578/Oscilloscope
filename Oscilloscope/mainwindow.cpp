@@ -434,7 +434,5 @@ void MainWindow::on_actionSave_Setup_triggered()    //File - Save Setup
             }
         }
         file.close();
-
-
 }
 

@@ -392,7 +392,7 @@
    </attribute>
    <addaction name="actionOpen_File"/>
    <addaction name="actionPrint"/>
-   <addaction name="actionNone"/>
+   <addaction name="actionCross"/>
    <addaction name="actionZoon_in"/>
    <addaction name="actionZoom_out"/>
    <addaction name="actionStart"/>
@@ -519,16 +519,11 @@
     <string>Delete Setup</string>
    </property>
   </action>
-  <action name="actionNone">
+  <action name="actionCross">
    <property name="icon">
     <iconset resource="resource.qrc">
      <normaloff>:/rec/twotone_arrow_upward_black_18dp.png</normaloff>:/rec/twotone_arrow_upward_black_18dp.png</iconset>
    </property>
-   <property name="text">
-    <string>None</string>
-   </property>
-  </action>
-  <action name="actionCross">
    <property name="text">
     <string>Cross</string>
    </property>
@@ -750,6 +745,11 @@
   <action name="actionArrow">
    <property name="text">
     <string>Arrow</string>
+   </property>
+  </action>
+  <action name="actionNone">
+   <property name="text">
+    <string>None</string>
    </property>
   </action>
  </widget>
