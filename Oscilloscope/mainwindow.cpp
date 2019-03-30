@@ -53,6 +53,9 @@ MainWindow::MainWindow(QWidget *parent) :
     fftSetupWin->resize(500, 440);
     fftSetupWin->show();
 
+    connect(ui->actionHorizontal, SIGNAL(triggered()), freqPlotObj, SLOT(horizontalState()));
+    connect(ui->actionVertical, SIGNAL(triggered()), freqPlotObj, SLOT(verticalState()));
+    connect(ui->actionCross, SIGNAL(triggered()), freqPlotObj, SLOT(crossState()));
 
 
     setWindowTitle("Oscilloscope");
@@ -163,14 +166,14 @@ void MainWindow::on_actionCross_triggered()
 
 void MainWindow::on_actionVertical_triggered()
 {
-    QCursor sizeVer= QCursor(Qt::SizeVerCursor);
-    freqPlotObj->setCursor(sizeVer);
+    QCursor cross = QCursor(Qt::CrossCursor);
+    freqPlotObj->setCursor(cross);
 }
 
 void MainWindow::on_actionHorizontal_triggered()
 {
-    QCursor sizeHor = QCursor(Qt::SizeHorCursor);
-    freqPlotObj->setCursor(sizeHor);
+    QCursor cross = QCursor(Qt::CrossCursor);
+    freqPlotObj->setCursor(cross);
 }
 
 void MainWindow::on_actionArrow_triggered()

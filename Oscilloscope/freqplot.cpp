@@ -8,6 +8,7 @@
 #include <QFile>
 #include <algorithm>
 #include <vector>
+#include <QMessageBox>
 
 double OsciSetup::time;
 double OsciSetup::volt;
@@ -23,9 +24,21 @@ freqPlot::freqPlot(QWidget *parent) :
     sender = new OsciSetup;
     ui->setupUi(this);
     textItem = new QCPItemText(ui->freqCustomPlot);
+
+    connect(ui->freqCustomPlot, SIGNAL(mousePress(QMouseEvent*)), this, SLOT(getX(QMouseEvent *)));
+    connect(ui->freqCustomPlot, SIGNAL(mousePress(QMouseEvent*)), this, SLOT(getY(QMouseEvent *)));
+    connect(ui->freqCustomPlot, SIGNAL(mousePress(QMouseEvent*)), this, SLOT(drawLines()));
     connect(ui->freqCustomPlot, SIGNAL(mousePress(QMouseEvent*)), this, SLOT(plotMousePress(QMouseEvent*)));
     ui->freqCustomPlot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom | QCP::iSelectAxes |
                                      QCP::iSelectLegend | QCP::iSelectPlottables);
+
+    item = new QCPItemLine(ui->freqCustomPlot);
+    item->setVisible(false);
+    item->setPen(QPen(Qt::gray, 1.0, Qt::DashLine));
+
+    item2 = new QCPItemLine(ui->freqCustomPlot);
+    item2->setVisible(false);
+    item2->setPen(QPen(Qt::gray, 1.0, Qt::DashLine));
 
 }
 
@@ -116,13 +129,62 @@ void freqPlot::closeEvent(QCloseEvent *event)
 void freqPlot::plotMousePress(QMouseEvent *event)
 {
 
-            double xCoord = ui->freqCustomPlot->xAxis->pixelToCoord(event->localPos().x());
-            double yCoord = ui->freqCustomPlot->yAxis->pixelToCoord(event->localPos().y());
+     double xCoord = ui->freqCustomPlot->xAxis->pixelToCoord(event->localPos().x());
+     double yCoord = ui->freqCustomPlot->yAxis->pixelToCoord(event->localPos().y());
 
-            textItem->setText(QString("(%1, %2)").arg(xCoord).arg(yCoord));
-            textItem->position->setCoords(QPointF(xCoord, yCoord));
-            textItem->setFont(QFont(font().family(), 13));
-            textItem->setPen(QPen(Qt::black));
+     textItem->setText(QString("(%1, %2)").arg(xCoord).arg(yCoord));
+     textItem->position->setCoords(QPointF(xCoord, yCoord));
+     textItem->setFont(QFont(font().family(), 13));
+     textItem->setPen(QPen(Qt::black));
             //textItem->setBrush(Qt::red);
-            ui->freqCustomPlot->replot();
+     ui->freqCustomPlot->replot();
+}
+
+void freqPlot::horizontalState() {
+    currentState = "cursorHorizontal";
+}
+
+void freqPlot::verticalState() {
+    currentState = "cursorVertical";
+}
+
+void freqPlot::crossState() {
+    currentState = "cursorCross";
+}
+
+double freqPlot::getX(QMouseEvent *event) {
+    x = ui->freqCustomPlot->xAxis->pixelToCoord(event->localPos().x());
+    return x;
+}
+
+double freqPlot::getY(QMouseEvent *event) {
+    y = ui->freqCustomPlot->yAxis->pixelToCoord(event->localPos().y());
+    return y;
+}
+
+void freqPlot::drawLines() {
+    item->setVisible(false);
+    item2->setVisible(false);
+
+    if(currentState == "cursorHorizontal") {
+        item->start->setCoords(-100, y);
+        item->end->setCoords(100, y);
+        item->setVisible(true);
+
+    } else if(currentState == "cursorVertical") {
+        item->start->setCoords(x, -100);
+        item->end->setCoords(x, 100);
+        item->setVisible(true);
+
+    } else if(currentState == "cursorCross") {
+        item->start->setCoords(-100, y);
+        item->end->setCoords(100, y);
+        item->setVisible(true);
+
+        item2->start->setCoords(x, -100);
+        item2->end->setCoords(x, 100);
+        item2->setVisible(true);
+    }
+
+    ui->freqCustomPlot->replot();
 }
