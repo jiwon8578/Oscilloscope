@@ -110,6 +110,8 @@ void OsciSetup::on_triggerToZeroBtn_clicked()
 {
     ui->timeEdit->setText("0");
     ui->voltageEdit->setText("0");
+    ui->timeComboBox->setCurrentIndex(0);
+    ui->voltageComboBox->setCurrentIndex(0);
     ui->couplingComboBox->setCurrentIndex(0);
     ui->probeComboBox->setCurrentIndex(0);
     ui->filterComboBox->setCurrentIndex(0);

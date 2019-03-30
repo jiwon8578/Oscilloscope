@@ -46,6 +46,8 @@ private slots:
     void save_scale();
     void save_horizontal();
 
+    void on_resettodefaultpushbutton_clicked();
+
 private:
     Ui::fftsetup *ui;
     void closeEvent(QCloseEvent *event) override;
