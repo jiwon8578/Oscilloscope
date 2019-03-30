@@ -63,7 +63,9 @@ QString MainWindow::filename;
 
 void freqPlot::on_pushButton_clicked()
 {
-    QFile file(MainWindow::filename);
+    QString filename_freqPlot = MainWindow::filename;
+
+    QFile file(filename_freqPlot);
         QVector<double> x;
         QVector<double> y;
 

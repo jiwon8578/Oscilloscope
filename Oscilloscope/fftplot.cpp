@@ -34,7 +34,9 @@ void fftPlot::closeEvent(QCloseEvent *event)
 
 void fftPlot::on_start_clicked()
 {
-    QFile file(MainWindow::filename);
+    QString filename_fftPlot = MainWindow::filename;
+
+    QFile file(filename_fftPlot);
         QVector<double> x;
         QVector<double> y;
 
