@@ -177,3 +177,15 @@ QList<QString> fftsetup::fftsetup_save_data() {
 
     return *fft_save_data_list;
 }
+
+void fftsetup::on_resettodefaultpushbutton_clicked()
+{
+    ui->delaytimelineedit->setText("40");
+    ui->delaytimecombobox->setCurrentIndex(2);
+    ui->nooffreqbinxcombobox->setCurrentIndex(1);
+    ui->scalecombobox->setCurrentIndex(1);
+    ui->verticaldivlineedit->setText("500");
+    ui->verticaldivcombobox->setCurrentIndex(2);
+    ui->horizontalcombobox->setCurrentIndex(1);
+
+}
